@@ -1,6 +1,35 @@
-[gd_scene load_steps=2 format=3 uid="uid://rnjjsn1ee2h4"]
+[gd_scene load_steps=5 format=3 uid="uid://rnjjsn1ee2h4"]
 
-[ext_resource type="Script" path="res://tree.gd" id="1_brfkd"]
+[ext_resource type="Script" uid="uid://biusef476ir61" path="res://tree.gd" id="1_brfkd"]
+[ext_resource type="Texture2D" uid="uid://ybsv7m7ygoja" path="res://seed.png" id="2_d2g23"]
+[ext_resource type="Texture2D" uid="uid://bri6xfwko8a0i" path="res://sprout.png" id="3_44ud8"]
+[ext_resource type="Texture2D" uid="uid://d3htf60kj8lmm" path="res://plant.png" id="4_ind6k"]
 
 [node name="Tree" type="Node2D"]
 script = ExtResource("1_brfkd")
+seed_texture = ExtResource("2_d2g23")
+sprout_texture = ExtResource("3_44ud8")
+plant_texture = ExtResource("4_ind6k")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("2_d2g23")
+
+[node name="Growth" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = -23.0
+offset_top = 142.0
+offset_right = 22.0
+offset_bottom = 187.0
+theme_override_font_sizes/font_size = 32
+text = "0.5"
+
+[node name="Energy" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 27.0
+offset_top = 142.0
+offset_right = 72.0
+offset_bottom = 187.0
+text = "0.5"

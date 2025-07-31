@@ -4,40 +4,72 @@ extends Node2D
 var day_time: float = 0.
 var speed: float = 0.1
 
+var moisture: float = 0.5
 
 var percent: float = 1.
+var ratio: float = 0.
 
 @export var night_color: Color
 @export var day_color: Color
 
+@export var tree: PackedScene
+
+var plants: Array
+
+
+var is_in_box: bool = false
+
+
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("right"):
-		if percent >= 1.:
-			percent += 0.5
-		else:
-			percent += 0.1
-		if percent > 5.0:
-			percent = 5.0
-	if event.is_action_pressed("left"):
-		if percent > 1.:
-			percent -= 0.5
-		else:
-			percent -= 0.1
-		if percent < 0.1:
-			percent = 0.1
+	if event.is_action_pressed("click"):
+		if is_in_box:
+			var pos = get_global_mouse_position()
+			var new = tree.instantiate()
+			%Plants.add_child(new)
+			new.position = Vector2(pos.x, 0)
+			plants.append(new)
+			new.parent = self
+
+
 
 
 func _process(delta: float) -> void:
-	day_time += speed * percent * delta
+	var t = abs(day_time) - 0.5
+	var d = 1.775 * pow(ratio, 2) + 2.225 * ratio + 1.0
+	var n = 1.775 * pow(ratio, 2) - 2.225 * ratio + 1.0
+	if t < 0.:
+		day_time += speed * d * delta
+	else:
+		day_time += speed * n * delta
 	if day_time > 1.:
 		day_time = -1.
 	
 	var color = lerp(Color.WHITE, night_color, day_time) if day_time >= 0. else lerp(night_color, Color.WHITE, 1.+day_time)
+	
+	for p in plants:
+		p.update(day_time, moisture, delta)
+	
 	%Sky.modulate = color
 	%Grass.modulate = color
 	%Soil.modulate = color
 	
 	%Time.text = str(snapped(day_time, 0.01))
 	%Speed.text = str(snapped(percent, 0.01))
+
+
+
+func delete(obj: Node2D):
+	plants.erase(obj)
+	obj.queue_free()
+
+
+func _on_area_2d_mouse_entered() -> void:
+	is_in_box = true
+
+func _on_area_2d_mouse_exited() -> void:
+	is_in_box = false
+
+func _on_day_ratio_value_changed(value: float) -> void:
+	ratio = value

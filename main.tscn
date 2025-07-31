@@ -1,13 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3ipapou67dv5"]
+[gd_scene load_steps=7 format=3 uid="uid://d3ipapou67dv5"]
 
-[ext_resource type="Script" path="res://test.gd" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://ct0nbvb1ubokq" path="res://test.gd" id="1_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://bwgy81c8o6yrn" path="res://grass texture.jpg" id="2_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://rnjjsn1ee2h4" path="res://tree.tscn" id="2_7mycd"]
 [ext_resource type="Texture2D" uid="uid://c7my5u48goi6o" path="res://soil texture.jpg" id="2_h2yge"]
 [ext_resource type="Texture2D" uid="uid://cljpijukowrau" path="res://Sky.jpg" id="2_lquwl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
+size = Vector2(1200, 250)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_0xm2m")
 night_color = Color(0.133649, 0.0446107, 0.391447, 1)
+tree = ExtResource("2_7mycd")
 
 [node name="Sky" type="Sprite2D" parent="."]
 unique_name_in_owner = true
@@ -26,6 +31,10 @@ unique_name_in_owner = true
 position = Vector2(2, 443)
 scale = Vector2(1.69701, 1.40338)
 texture = ExtResource("2_h2yge")
+
+[node name="Plants" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, 3.05176e-05)
 
 [node name="Time" type="Label" parent="."]
 unique_name_in_owner = true
@@ -46,3 +55,25 @@ theme_override_font_sizes/font_size = 64
 text = "1.0"
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, 247)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_1bvp3")
+
+[node name="DayRatio" type="HSlider" parent="."]
+unique_name_in_owner = true
+offset_left = 328.0
+offset_top = -310.0
+offset_right = 564.0
+offset_bottom = -294.0
+min_value = -1.0
+max_value = 1.0
+step = 0.1
+tick_count = 3
+ticks_on_borders = true
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="value_changed" from="DayRatio" to="." method="_on_day_ratio_value_changed"]
