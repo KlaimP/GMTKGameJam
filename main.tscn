@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://rnjjsn1ee2h4" path="res://tree.tscn" id="2_7mycd"]
 [ext_resource type="Texture2D" uid="uid://c7my5u48goi6o" path="res://soil texture.jpg" id="2_h2yge"]
 [ext_resource type="Texture2D" uid="uid://cljpijukowrau" path="res://Sky.jpg" id="2_lquwl"]
-[ext_resource type="PackedScene" uid="uid://bcj01evqynl6h" path="res://plant.tscn" id="6_7mycd"]
+[ext_resource type="PackedScene" uid="uid://bcj01evqynl6h" path="res://plants/plant.tscn" id="6_7mycd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(1200, 250)
