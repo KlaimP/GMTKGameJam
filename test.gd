@@ -4,9 +4,8 @@ extends Node2D
 var day_time: float = 0.
 var speed: float = 0.1
 
-var moisture: float = 0.5
+var cloudiness: float = 0.5
 
-var percent: float = 1.
 var ratio: float = 0.
 
 @export var night_color: Color
@@ -49,14 +48,13 @@ func _process(delta: float) -> void:
 	var color = lerp(Color.WHITE, night_color, day_time) if day_time >= 0. else lerp(night_color, Color.WHITE, 1.+day_time)
 	
 	for p in plants:
-		p.update(day_time, moisture, delta)
+		p.update(day_time, 0.5, delta)
 	
-	%Sky.modulate = color
+	%Weather.update(day_time, cloudiness, delta)
+	
 	%Grass.modulate = color
 	%Soil.modulate = color
 	
-	%Time.text = str(snapped(day_time, 0.01))
-	%Speed.text = str(snapped(percent, 0.01))
 
 
 
@@ -71,5 +69,9 @@ func _on_area_2d_mouse_entered() -> void:
 func _on_area_2d_mouse_exited() -> void:
 	is_in_box = false
 
+
 func _on_day_ratio_value_changed(value: float) -> void:
 	ratio = value
+
+func _on_cloudiness_value_changed(value: float) -> void:
+	cloudiness = value
