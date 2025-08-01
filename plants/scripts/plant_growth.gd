@@ -115,4 +115,3 @@ func give_score() -> int:
 	if (stage > score_value.size()):
 		return score_value.back()
 	return score_value[stage]
-

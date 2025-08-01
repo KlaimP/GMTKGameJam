@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://djj3qhllkvssp"]
+
+[ext_resource type="Script" uid="uid://c38vqcrodejoq" path="res://UI/card.gd" id="1_ww2gn"]
+
+[node name="Card" type="Panel"]
+custom_minimum_size = Vector2(120, 190)
+offset_right = 60.0
+offset_bottom = 92.0
+script = ExtResource("1_ww2gn")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(120, 190)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 92.0
+color = Color(0, 0.521569, 0, 1)
