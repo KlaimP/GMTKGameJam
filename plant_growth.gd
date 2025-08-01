@@ -5,7 +5,7 @@ extends Node2D
 @export var growth_textures : Array[Texture2D] # Текстуры растений (Количество текстур = количеству стадий)
 @export var speed : float = 0.1 # Скорость роста
 @export var optimal_moisture: Vector2 = Vector2(0.4, 0.7) # Оптимальная влажность почвы, при котором растение растет
-@export var energy_conservation: float = 0.5 # Сколько энергии оно собирает
+@export var energy_conservation: float = 0.1 # Сколько энергии оно собирает
 @export var required_water : float = 0.05 # Сколько воды нужно растению
 @export var absorption_rate: float = 0.1 # Сколько воды оно собирает
 @export var max_water: float = 1. # Максимальное количество собранной воды
@@ -28,25 +28,26 @@ extends Node2D
 
 ###########################################################
 var can_grow: bool = true # Может ли расти растение
-var dying: bool = false # Умирает ли растение
+var dying_water: bool = false # Умирает ли растение от недостатка воды
+var dying_growth: bool = false # Умирает ли растение от старости
 
 func _ready() -> void:
 	$Texture.texture = growth_textures[0]
 
-
 func _process(delta: float) -> void:
 	if (can_grow):
 		process_growth(delta)
-	else:
-		dying = true
 	die_process(delta)
 
 func absorb_water(delta: float) -> void:
 	water += absorption_rate * delta
 	water = clamp(water, 0.0, max_water + max_water * 0.25)
 
-func die_process(delta: float):
-	if (dying):
+func die_process(delta: float) -> void:
+	if (health <= 0):
+		pass
+	
+	if (dying_water || dying_growth):
 		health -= 1 * delta
 	else:
 		health += 1 * delta
@@ -60,9 +61,9 @@ func drink_water(delta: float) -> void:
 	water -= required_water * delta
 	if (water < 0):
 		water = 0
-		dying = true
+		dying_water = true
 	else: 
-		dying = false
+		dying_water = false
 
 func process_growth(delta: float) -> void:
 	if (is_day == is_day_plant):
@@ -72,8 +73,8 @@ func process_growth(delta: float) -> void:
 				absorb_water(delta)
 			drink_water(delta)
 		else:
-			growth += speed * weather_factor * delta
-			energy += speed * energy_conservation * delta
+			growth += speed * weather_factor / 2 * delta
+			energy += energy_conservation * delta
 			if(suitable_moisture()):
 				absorb_water(delta)
 			drink_water(delta)
@@ -91,4 +92,5 @@ func process_growth(delta: float) -> void:
 		if (stage < growth_textures.size()):
 			$Texture.texture = growth_textures[stage]
 		else:
-			dying = true
+			can_grow = false
+			dying_growth = true
