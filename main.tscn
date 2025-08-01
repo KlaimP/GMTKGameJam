@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://d3ipapou67dv5"]
+[gd_scene load_steps=8 format=3 uid="uid://d3ipapou67dv5"]
 
 [ext_resource type="Script" uid="uid://ct0nbvb1ubokq" path="res://test.gd" id="1_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://bwgy81c8o6yrn" path="res://grass texture.jpg" id="2_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://rnjjsn1ee2h4" path="res://tree.tscn" id="2_7mycd"]
 [ext_resource type="Texture2D" uid="uid://c7my5u48goi6o" path="res://soil texture.jpg" id="2_h2yge"]
 [ext_resource type="Texture2D" uid="uid://cljpijukowrau" path="res://Sky.jpg" id="2_lquwl"]
+[ext_resource type="PackedScene" uid="uid://bcj01evqynl6h" path="res://plants/plant.tscn" id="6_7mycd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(1200, 250)
@@ -61,6 +62,8 @@ position = Vector2(0, 247)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_1bvp3")
+
+[node name="Plant" parent="." instance=ExtResource("6_7mycd")]
 
 [node name="DayRatio" type="HSlider" parent="."]
 unique_name_in_owner = true
