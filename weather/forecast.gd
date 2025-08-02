@@ -13,20 +13,22 @@ var ui_offset: int = 7
 var ui_spacing: int = 5
 
 
-signal area_entered(int)
-signal area_exited(int)
-
 var choosed: int = -1
 
 
 
 
 
-func next_weather():
+func next_weather(day_night: float, temperature: float, cloudiness: float, moisture: float):
 	Events.change_weather.emit(weather_array[0].weather)
 	for i in range(1, days_in_forecast):
 		weather_array[i - 1].set_weather(weather_array[i].weather)
-	weather_array[days_in_forecast - 1].set_weather(randi_range(0, 2))
+	
+	var weather_chances: Array
+	weather_chances.resize(7)
+	weather_chances.fill(0.5)
+	
+	weather_array[days_in_forecast - 1].set_weather(weather_chances.pick_random())
 
 
 
@@ -44,7 +46,6 @@ func choosed_day(day: int):
 
 func _ready() -> void:
 	Events.choosed_day.connect(choosed_day)
-	Events.day_ends.connect(next_weather)
 	weather_array.resize(days_in_forecast)
 	$ForecastBackground.size = Vector2(
 		ui_offset * 2 + days_in_forecast * weather_size.x + (days_in_forecast - 1) * ui_spacing,
@@ -57,7 +58,10 @@ func _ready() -> void:
 		d.position = Vector2(ui_offset + i * (ui_spacing + weather_size.x) + weather_size.x/2, 
 								ui_offset + weather_size.y/2)
 		d.get_children()[0].shape.size = weather_size
-		d.set_weather(randi_range(0, 6))
+		if i < 3:
+			d.set_weather(0)
+		else:
+			d.set_weather(randi()%2)
 		#wee woo wee woo
 		
 	
