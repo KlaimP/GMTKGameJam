@@ -27,12 +27,8 @@ func _input(event: InputEvent) -> void:
 			var pos = get_global_mouse_position()
 			var new = tree.instantiate()
 			%Plants.add_child(new)
-			new.position = Vector2(pos.x, 0)
+			new.position = Vector2(pos.x, 125)
 			plants.append(new)
-			new.parent = self
-
-
-
 
 func _process(delta: float) -> void:
 	var t = abs(day_time) - 0.5
@@ -47,9 +43,6 @@ func _process(delta: float) -> void:
 		Events.day_ends.emit()
 	
 	var color = lerp(Color.WHITE, night_color, day_time) if day_time >= 0. else lerp(night_color, Color.WHITE, 1.+day_time)
-	
-	for p in plants:
-		p.update(day_time, 0.5, delta)
 	
 	%Weather.update(day_time, cloudiness, delta)
 	

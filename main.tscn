@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://ct0nbvb1ubokq" path="res://test.gd" id="1_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://bwgy81c8o6yrn" path="res://grass texture.jpg" id="2_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://rnjjsn1ee2h4" path="res://tree.tscn" id="2_7mycd"]
 [ext_resource type="PackedScene" uid="uid://cpkqw3to1xuv1" path="res://weather/weather.tscn" id="3_7mycd"]
 [ext_resource type="Texture2D" uid="uid://cpghq1ebxwpya" path="res://soil/soil texture small.jpg" id="5_5vw27"]
+[ext_resource type="PackedScene" uid="uid://bcj01evqynl6h" path="res://plants/plant.tscn" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://cmhnueu6sm7wj" path="res://soil/tile.tscn" id="6_kek77"]
 [ext_resource type="PackedScene" uid="uid://vymwh2cu17ai" path="res://soil/soil.tscn" id="17_074og"]
 [ext_resource type="PackedScene" uid="uid://dujnypkjmjp4y" path="res://UI/inventory.tscn" id="17_yaehf"]
@@ -15,7 +15,7 @@ size = Vector2(1200, 250)
 [node name="Main" type="Node2D"]
 script = ExtResource("1_0xm2m")
 night_color = Color(0.133649, 0.0446107, 0.391447, 1)
-tree = ExtResource("2_7mycd")
+tree = ExtResource("6_7mycd")
 
 [node name="Weather" parent="." instance=ExtResource("3_7mycd")]
 unique_name_in_owner = true

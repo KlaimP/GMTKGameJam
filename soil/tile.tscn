@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://cmhnueu6sm7wj"]
+[gd_scene load_steps=3 format=3 uid="uid://cmhnueu6sm7wj"]
 
+[ext_resource type="Texture2D" uid="uid://cpghq1ebxwpya" path="res://soil/soil texture small.jpg" id="1_pjnyc"]
 [ext_resource type="Script" uid="uid://c6vrtrwaryjew" path="res://tile.gd" id="1_wx4qk"]
 
 [node name="Tile" type="Sprite2D"]
+texture = ExtResource("1_pjnyc")
 script = ExtResource("1_wx4qk")
