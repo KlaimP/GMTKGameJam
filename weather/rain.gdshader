@@ -6,9 +6,9 @@
 shader_type canvas_item;
 
 // can make snow by adjusting values
-uniform int count: hint_range(0, 2000) = 300;
-uniform float slant: hint_range(-0.1, 0.1) = -0.01;
-uniform float speed: hint_range(25.0, 100.0) = 50.0;
+uniform int count: hint_range(0, 10000) = 300;
+uniform float slant: hint_range(-0.1, 1.) = -0.01;
+uniform float speed: hint_range(1.0, 100.0) = 50.0;
 uniform float blur: hint_range(0.0005, 0.1) = 0.002;
 uniform vec4 colour: source_color = vec4(1.0, 1.0, 1.0, 1.0);
 uniform vec2 size = vec2(0.01, 0.4);

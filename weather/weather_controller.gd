@@ -14,8 +14,16 @@ var moisture_speed: float = 0.01
 
 var day_night_ratio: float
 var ratio_speed: float = 0.05
-var dn_array: Array[float]
-var dn_array_size: int
+
+enum avg_types {
+	DAY_NIGHT_RATIO,
+	TEMPERATURE,
+	CLOUDINESS,
+	MOISTURE
+}
+var average: Dictionary[avg_types, Array]
+var average_points: int = 12
+var average_time: float = 0.5
 
 
 @export var day_sky_color: Color
@@ -33,7 +41,6 @@ var weather_time: float = 0.
 
 
 func _ready() -> void:
-	dn_array.resize(dn_array_size)
 	Events.change_weather.connect(change_weather)
 
 
@@ -41,6 +48,8 @@ func _ready() -> void:
 func update(_time: float, _cloudiness: float, delta: float):
 	var time = -(abs(_time) - 0.5) * 2.
 	%Time.text = str(snapped(time, 0.01))
+	
+	$Clock.update(_time)
 	
 	var weather: Weather = weather_scripts[current_weather]
 	
@@ -56,6 +65,8 @@ func update(_time: float, _cloudiness: float, delta: float):
 	
 	moisture = weather.change_moisture(time, cloudiness, moisture, moisture_speed, temperature, temp_edges, delta)
 	$Moisture.text = str(int(moisture * 100)) + "%"
+	
+	%Soil.add_moisture(weather.get_soil_moisutre())
 	
 	change_shader(time, cloudiness)
 

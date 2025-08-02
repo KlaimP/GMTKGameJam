@@ -27,6 +27,7 @@ scale = Vector2(1.78676, 0.936765)
 texture = ExtResource("2_1bvp3")
 
 [node name="Soil" parent="." instance=ExtResource("17_074og")]
+unique_name_in_owner = true
 position = Vector2(-575, 189)
 tile_texture = ExtResource("5_5vw27")
 grid_width = 15
