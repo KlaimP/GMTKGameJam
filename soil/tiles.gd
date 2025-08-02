@@ -23,6 +23,8 @@ func create_tile_grid():
 			tile.wetness = randf_range(0.1, 1)
 			tile.capacity = 1
 			tile.coef_of_minerals = randf_range(0.1, 1)
+			if (y>0):
+				tile.up_tile = grid[0][x]
 			row.append(tile)
 			add_child(tile)
 		grid.append(row)
