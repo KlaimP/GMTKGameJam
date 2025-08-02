@@ -12,4 +12,4 @@ func _on_button_button_down() -> void:
 	var slot = card_slot.instantiate()
 	slot.itemName = "Bebebe"
 	inventory.append(slot)
-	$BoxContainer/HBoxContainer.add_child(slot)
+	$BoxContainer/VBoxContainer.add_child(slot)

@@ -2,7 +2,7 @@ extends Control
 
 var money: int = 5 # кол-во денег
 
-var purchases: Array [Card] # массив карт
+@export var purchases: Array [Card] # массив карт
 
 func _ready():
 	update_currency_label()

@@ -4,16 +4,16 @@
 [ext_resource type="Texture2D" uid="uid://c075oc5rs5a56" path="res://UI/Civilian_card_version3_pic1.png" id="2_gjfx2"]
 
 [node name="Card" type="Panel"]
-custom_minimum_size = Vector2(120, 190)
+custom_minimum_size = Vector2(190, 120)
 offset_right = 60.0
 offset_bottom = 92.0
-pivot_offset = Vector2(60, 190)
+pivot_offset = Vector2(190, 60)
 script = ExtResource("1_ww2gn")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 119.0
-offset_bottom = 189.0
+offset_right = 190.0
+offset_bottom = 120.0
 texture = ExtResource("2_gjfx2")
 expand_mode = 1
 
