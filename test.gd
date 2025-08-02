@@ -44,6 +44,7 @@ func _process(delta: float) -> void:
 		day_time += speed * n * delta
 	if day_time > 1.:
 		day_time = -1.
+		Events.day_ends.emit()
 	
 	var color = lerp(Color.WHITE, night_color, day_time) if day_time >= 0. else lerp(night_color, Color.WHITE, 1.+day_time)
 	

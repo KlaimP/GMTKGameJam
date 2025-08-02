@@ -14,6 +14,8 @@ var moisture_speed: float = 0.01
 
 var day_night_ratio: float
 var ratio_speed: float = 0.05
+var dn_array: Array[float]
+var dn_array_size: int
 
 
 @export var day_sky_color: Color
@@ -30,6 +32,9 @@ var weather_time: float = 0.
 @export var weather_scripts: Array[Weather]
 
 
+func _ready() -> void:
+	dn_array.resize(dn_array_size)
+	Events.change_weather.connect(change_weather)
 
 
 
@@ -52,20 +57,18 @@ func update(_time: float, _cloudiness: float, delta: float):
 	moisture = weather.change_moisture(time, cloudiness, moisture, moisture_speed, temperature, temp_edges, delta)
 	$Moisture.text = str(int(moisture * 100)) + "%"
 	
-	var next_weather = weather.change_weather(weather_time, temperature, 
-											cloudiness, moisture, time)
-	if next_weather != current_weather:
-		weather.end_weather()
-		current_weather = next_weather
-		weather = weather_scripts[current_weather]
-		weather_time = 0.
-		weather.start_weather()
-	
-	%W.text = str(current_weather)
-	
 	change_shader(time, cloudiness)
 
 
+
+func change_weather(next: int):
+	var weather: Weather = weather_scripts[current_weather]
+	if next != current_weather:
+		weather.end_weather()
+		current_weather = next
+		weather = weather_scripts[current_weather]
+		weather_time = 0.
+		weather.start_weather()
 
 
 

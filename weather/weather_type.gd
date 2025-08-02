@@ -1,22 +1,15 @@
 extends Node
 class_name Weather
 
-@export var this_weather: weather_type
-
-var prev_change: int = 0
-var time_to_update: float = 20.
-
 
 enum weather_type {
 	CLEAR,
-	CLOUDY,
 	RAIN,
 	THUNDER,
 	SNOW,
 	BLIZZARD,
 	DROUGHT,
-	MIST,
-	SHARK_TORNADO
+	MIST
 }
 
 
@@ -26,25 +19,7 @@ func end_weather():
 
 
 func start_weather():
-	prev_change = 0.
-
-
-func change_weather(
-	weather_time: float, temperature: float, cloudiness: float,
-	moisture: float, time: float
-	) -> int:
-	
-	var next = this_weather
-	var t: int = weather_time/time_to_update
-	if t > prev_change:
-		next = next_weather(weather_time, temperature, cloudiness, moisture, time)
-		prev_change = t
-	
-	return next
-
-func next_weather(weather_time: float, temperature: float, cloudiness: float,
-	moisture: float, time: float) -> int:
-	return this_weather
+	pass
 
 
 
