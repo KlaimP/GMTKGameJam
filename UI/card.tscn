@@ -1,16 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://djj3qhllkvssp"]
+[gd_scene load_steps=3 format=3 uid="uid://djj3qhllkvssp"]
 
 [ext_resource type="Script" uid="uid://c38vqcrodejoq" path="res://UI/card.gd" id="1_ww2gn"]
+[ext_resource type="Texture2D" uid="uid://c075oc5rs5a56" path="res://UI/Civilian_card_version3_pic1.png" id="2_gjfx2"]
 
 [node name="Card" type="Panel"]
 custom_minimum_size = Vector2(120, 190)
 offset_right = 60.0
 offset_bottom = 92.0
+pivot_offset = Vector2(60, 190)
 script = ExtResource("1_ww2gn")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-custom_minimum_size = Vector2(120, 190)
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 92.0
-color = Color(0, 0.521569, 0, 1)
+offset_right = 119.0
+offset_bottom = 189.0
+texture = ExtResource("2_gjfx2")
+expand_mode = 1
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
