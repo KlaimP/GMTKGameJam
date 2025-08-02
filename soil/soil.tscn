@@ -1,13 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://vymwh2cu17ai"]
+[gd_scene load_steps=2 format=3 uid="uid://vymwh2cu17ai"]
 
 [ext_resource type="Script" uid="uid://sjvm35veo4xk" path="res://soil/tiles.gd" id="1_u5riw"]
-[ext_resource type="Texture2D" uid="uid://cpghq1ebxwpya" path="res://soil/soil texture small.jpg" id="2_orqpr"]
-[ext_resource type="PackedScene" uid="uid://cmhnueu6sm7wj" path="res://soil/tile.tscn" id="2_xj6yj"]
 
 [node name="Soil" type="Node2D"]
-
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2(40, 360)
 script = ExtResource("1_u5riw")
-tile_texture = ExtResource("2_orqpr")
-tile = ExtResource("2_xj6yj")

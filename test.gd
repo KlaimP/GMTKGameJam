@@ -52,9 +52,6 @@ func _process(delta: float) -> void:
 	
 	%Weather.update(day_time, cloudiness, delta)
 	
-	%Grass.modulate = color
-	%Soil.modulate = color
-	
 
 
 

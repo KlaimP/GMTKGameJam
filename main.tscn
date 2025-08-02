@@ -1,63 +1,13 @@
-[gd_scene load_steps=24 format=3 uid="uid://d3ipapou67dv5"]
+[gd_scene load_steps=10 format=3 uid="uid://d3ipapou67dv5"]
 
 [ext_resource type="Script" uid="uid://ct0nbvb1ubokq" path="res://test.gd" id="1_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://bwgy81c8o6yrn" path="res://grass texture.jpg" id="2_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://rnjjsn1ee2h4" path="res://tree.tscn" id="2_7mycd"]
-[ext_resource type="Texture2D" uid="uid://c7my5u48goi6o" path="res://soil texture.jpg" id="2_h2yge"]
-[ext_resource type="Script" uid="uid://bw376w6tdgjlo" path="res://weather/weather_controller.gd" id="3_7mycd"]
-[ext_resource type="Shader" uid="uid://sbbl522vvc3g" path="res://cloud.gdshader" id="4_7mycd"]
-[ext_resource type="Script" uid="uid://l2pehcctiwxc" path="res://weather/clear.gd" id="5_272bh"]
-[ext_resource type="Script" uid="uid://dwgfe6icnohra" path="res://weather/cloudy.gd" id="6_vivmo"]
-[ext_resource type="Script" uid="uid://bu4ihkbaa4e1r" path="res://weather/rain.gd" id="7_2cqfq"]
-[ext_resource type="Shader" uid="uid://bqpc0l0ydsrk3" path="res://weather/rain.gdshader" id="8_2cqfq"]
-[ext_resource type="Script" uid="uid://cd34b34s0e32o" path="res://weather/thunder.gd" id="8_yaehf"]
-[ext_resource type="Script" uid="uid://creicbsv0d4lq" path="res://weather/snow.gd" id="9_074og"]
-[ext_resource type="Script" uid="uid://b7cq4hkq05nkt" path="res://weather/blizzard.gd" id="10_cegan"]
-[ext_resource type="Script" uid="uid://cg1224vapkg81" path="res://weather/drought.gd" id="11_82xsv"]
-[ext_resource type="Script" uid="uid://di4stmryxsvk6" path="res://weather/mist.gd" id="12_getpj"]
-[ext_resource type="Script" uid="uid://dtyjk6kclwhl7" path="res://weather/shark.gd" id="13_ryguw"]
-
-[sub_resource type="Gradient" id="Gradient_7mycd"]
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_272bh"]
-noise_type = 3
-domain_warp_type = 1
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5vw27"]
-seamless = true
-color_ramp = SubResource("Gradient_7mycd")
-noise = SubResource("FastNoiseLite_272bh")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lquwl"]
-shader = ExtResource("4_7mycd")
-shader_parameter/cloud_texture = SubResource("NoiseTexture2D_5vw27")
-shader_parameter/cloudiness = 0.5
-shader_parameter/uv_scale = 0.5
-shader_parameter/speed = Vector2(0.01, 0)
-shader_parameter/contrast = 1.5
-shader_parameter/cloud_color = Vector4(1, 1, 1, 0.9)
-shader_parameter/sky_color = Vector4(0.4, 0.6, 0.9, 1)
-shader_parameter/amount = 100.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yaehf"]
-shader = ExtResource("8_2cqfq")
-shader_parameter/count = 300
-shader_parameter/slant = -0.01
-shader_parameter/speed = 50.0
-shader_parameter/blur = 0.002
-shader_parameter/colour = Color(1, 1, 1, 1)
-shader_parameter/size = Vector2(0.01, 0.4)
-shader_parameter/amount = 500.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2cqfq"]
-shader = ExtResource("8_2cqfq")
-shader_parameter/count = 2000
-shader_parameter/slant = 0.1
-shader_parameter/speed = 50.0
-shader_parameter/blur = 0.002
-shader_parameter/colour = Color(1, 1, 1, 1)
-shader_parameter/size = Vector2(0.01, 0.4)
-shader_parameter/amount = 500.0
+[ext_resource type="PackedScene" uid="uid://cpkqw3to1xuv1" path="res://weather/weather.tscn" id="3_7mycd"]
+[ext_resource type="Texture2D" uid="uid://cpghq1ebxwpya" path="res://soil/soil texture small.jpg" id="5_5vw27"]
+[ext_resource type="PackedScene" uid="uid://cmhnueu6sm7wj" path="res://soil/tile.tscn" id="6_kek77"]
+[ext_resource type="PackedScene" uid="uid://vymwh2cu17ai" path="res://soil/soil.tscn" id="17_074og"]
+[ext_resource type="PackedScene" uid="uid://dujnypkjmjp4y" path="res://UI/inventory.tscn" id="17_yaehf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(1200, 250)
@@ -67,125 +17,8 @@ script = ExtResource("1_0xm2m")
 night_color = Color(0.133649, 0.0446107, 0.391447, 1)
 tree = ExtResource("2_7mycd")
 
-[node name="Weather" type="Node2D" parent="." node_paths=PackedStringArray("weather_scripts")]
+[node name="Weather" parent="." instance=ExtResource("3_7mycd")]
 unique_name_in_owner = true
-script = ExtResource("3_7mycd")
-day_sky_color = Color(0.321259, 0.643281, 0.9674, 1)
-night_sky_color = Color(0.141632, 0.00471026, 0.160684, 1)
-morning_sky_color = Color(0.431056, 0.142838, 0.677637, 1)
-day_cloud_color = Color(0.99558, 0.99558, 0.99558, 1)
-night_cloud_color = Color(0.179146, 0.176395, 0.168931, 1)
-morning_cloud_color = Color(0.984041, 0.664353, 0.888806, 1)
-weather_scripts = [NodePath("Weathers/Clear"), NodePath("Weathers/Cloudy"), NodePath("Weathers/Rain"), NodePath("Weathers/Thunder"), NodePath("Weathers/Snow"), NodePath("Weathers/Blizzard"), NodePath("Weathers/Drought"), NodePath("Weathers/Mist"), NodePath("Weathers/Shark")]
-
-[node name="Sky" type="ColorRect" parent="Weather"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_lquwl")
-offset_left = -594.0
-offset_top = -546.0
-offset_right = -494.0
-offset_bottom = -446.0
-scale = Vector2(12, 12)
-color = Color(0.0980392, 0.623529, 1, 1)
-
-[node name="Temperature" type="Label" parent="Weather"]
-offset_left = 336.0
-offset_top = -220.0
-offset_right = 376.0
-offset_bottom = -197.0
-text = "23 °C"
-
-[node name="Moisture" type="Label" parent="Weather"]
-offset_left = 406.0
-offset_top = -220.0
-offset_right = 446.0
-offset_bottom = -197.0
-text = "50%"
-
-[node name="Cloudiness" type="Label" parent="Weather"]
-offset_left = 459.0
-offset_top = -220.0
-offset_right = 499.0
-offset_bottom = -197.0
-text = "0.1"
-
-[node name="W" type="Label" parent="Weather"]
-unique_name_in_owner = true
-offset_left = 335.0
-offset_top = -191.0
-offset_right = 375.0
-offset_bottom = -168.0
-
-[node name="Weathers" type="Node" parent="Weather"]
-
-[node name="Clear" type="Node" parent="Weather/Weathers"]
-script = ExtResource("5_272bh")
-
-[node name="Cloudy" type="Node" parent="Weather/Weathers"]
-script = ExtResource("6_vivmo")
-this_weather = 1
-
-[node name="Rain" type="Node" parent="Weather/Weathers"]
-script = ExtResource("7_2cqfq")
-this_weather = 2
-
-[node name="RainEffect" type="ColorRect" parent="Weather/Weathers/Rain"]
-visible = false
-material = SubResource("ShaderMaterial_yaehf")
-offset_left = -799.0
-offset_top = -1218.0
-offset_right = -685.0
-offset_bottom = -1107.0
-scale = Vector2(12, 12)
-
-[node name="RainBackground" type="ColorRect" parent="Weather/Weathers/Rain"]
-visible = false
-offset_left = -600.0
-offset_top = -600.0
-offset_right = 600.0
-offset_bottom = 600.0
-color = Color(0.262745, 0.262745, 0.262745, 0.392157)
-
-[node name="Thunder" type="Node" parent="Weather/Weathers"]
-script = ExtResource("8_yaehf")
-this_weather = 3
-
-[node name="ThunderEffect" type="ColorRect" parent="Weather/Weathers/Thunder"]
-visible = false
-material = SubResource("ShaderMaterial_2cqfq")
-offset_left = -620.0
-offset_top = -1087.0
-offset_right = -520.0
-offset_bottom = -987.0
-scale = Vector2(12, 12)
-
-[node name="ThunderBackground" type="ColorRect" parent="Weather/Weathers/Thunder"]
-visible = false
-offset_left = -600.0
-offset_top = -600.0
-offset_right = 600.0
-offset_bottom = 600.0
-color = Color(0.160186, 0.123338, 0.237659, 0.392157)
-
-[node name="Snow" type="Node" parent="Weather/Weathers"]
-script = ExtResource("9_074og")
-this_weather = 4
-
-[node name="Blizzard" type="Node" parent="Weather/Weathers"]
-script = ExtResource("10_cegan")
-this_weather = 5
-
-[node name="Drought" type="Node" parent="Weather/Weathers"]
-script = ExtResource("11_82xsv")
-this_weather = 6
-
-[node name="Mist" type="Node" parent="Weather/Weathers"]
-script = ExtResource("12_getpj")
-this_weather = 7
-
-[node name="Shark" type="Node" parent="Weather/Weathers"]
-script = ExtResource("13_ryguw")
-this_weather = 8
 
 [node name="Grass" type="Sprite2D" parent="."]
 unique_name_in_owner = true
@@ -193,11 +26,12 @@ position = Vector2(5, 431)
 scale = Vector2(1.78676, 0.936765)
 texture = ExtResource("2_1bvp3")
 
-[node name="Soil" type="Sprite2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(2, 443)
-scale = Vector2(1.69701, 1.40338)
-texture = ExtResource("2_h2yge")
+[node name="Soil" parent="." instance=ExtResource("17_074og")]
+position = Vector2(-575, 189)
+tile_texture = ExtResource("5_5vw27")
+grid_width = 15
+grid_height = 3
+tile = ExtResource("6_kek77")
 
 [node name="Plants" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -244,6 +78,18 @@ step = 0.1
 value = 0.5
 tick_count = 3
 ticks_on_borders = true
+
+[node name="Inventory" parent="." instance=ExtResource("17_yaehf")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = 324.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.8, 0.8)
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
