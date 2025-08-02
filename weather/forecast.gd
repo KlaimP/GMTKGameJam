@@ -57,7 +57,8 @@ func _ready() -> void:
 		d.position = Vector2(ui_offset + i * (ui_spacing + weather_size.x) + weather_size.x/2, 
 								ui_offset + weather_size.y/2)
 		d.get_children()[0].shape.size = weather_size
-		d.set_weather(randi_range(0, 5))
+		d.set_weather(randi_range(0, 6))
+		#wee woo wee woo
 		
 	
 	

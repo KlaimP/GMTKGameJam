@@ -12,6 +12,11 @@ var grid : Array [Array] # матрица тайлов
 func _ready():
 	create_tile_grid()
 
+
+func add_moisture(amount: float):
+	pass
+
+
 func create_tile_grid():
 	for y in grid_height:
 		var row : Array [Sprite2D]

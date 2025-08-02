@@ -31,6 +31,10 @@ func change_cloudiness(
 	return clamp(cloudiness, 0., 1.)
 
 
+func get_soil_moisutre() -> float:
+	return 0.
+
+
 func change_temperature(
 	temperature: float, temp_edges: Vector2, cloudiness: float,
 	temp_change: float, time: float, delta: float

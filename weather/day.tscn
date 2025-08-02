@@ -1,16 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://dpdijbqkcbyg7"]
+[gd_scene load_steps=10 format=3 uid="uid://dpdijbqkcbyg7"]
 
 [ext_resource type="Script" uid="uid://dd0jilal166ks" path="res://weather/day.gd" id="1_amc5y"]
+[ext_resource type="Texture2D" uid="uid://cinjd33xs2cyo" path="res://weather/sprites/clear.png" id="2_6ng5h"]
+[ext_resource type="Texture2D" uid="uid://c7et7myb22pll" path="res://weather/sprites/rain.png" id="3_4508d"]
+[ext_resource type="Texture2D" uid="uid://cs1jagd5yopaw" path="res://weather/sprites/thunder.png" id="4_olbhp"]
+[ext_resource type="Texture2D" uid="uid://hswgtkvm88sr" path="res://weather/sprites/snow.png" id="5_okoms"]
+[ext_resource type="Texture2D" uid="uid://dnt2jrgqpqn21" path="res://weather/sprites/blizzard.png" id="6_vbott"]
+[ext_resource type="Texture2D" uid="uid://dl8wvj75fci48" path="res://weather/sprites/drought.png" id="7_vhtwt"]
+[ext_resource type="Texture2D" uid="uid://lu37thm1ja6f" path="res://weather/sprites/mist.png" id="8_hu0x4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7fq8f"]
 
 [node name="Day" type="Area2D"]
 script = ExtResource("1_amc5y")
+sprites = Array[Texture2D]([ExtResource("2_6ng5h"), ExtResource("3_4508d"), ExtResource("4_olbhp"), ExtResource("5_okoms"), ExtResource("6_vbott"), ExtResource("7_vhtwt"), ExtResource("8_hu0x4")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_7fq8f")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

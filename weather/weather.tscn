@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://cpkqw3to1xuv1"]
+[gd_scene load_steps=29 format=3 uid="uid://cpkqw3to1xuv1"]
 
 [ext_resource type="Script" uid="uid://bw376w6tdgjlo" path="res://weather/weather_controller.gd" id="1_sqjxv"]
-[ext_resource type="Shader" uid="uid://sbbl522vvc3g" path="res://cloud.gdshader" id="2_6qlh3"]
+[ext_resource type="Shader" uid="uid://b408q7rw31t83" path="res://clock/mist.gdshader" id="2_6qlh3"]
+[ext_resource type="Shader" uid="uid://uvkjilnn3qjc" path="res://clock/sky.gdshader" id="2_thk6s"]
 [ext_resource type="Script" uid="uid://dyedtp8ecr2ye" path="res://weather/forecast.gd" id="2_v4dhi"]
 [ext_resource type="Script" uid="uid://l2pehcctiwxc" path="res://weather/clear.gd" id="3_v4dhi"]
 [ext_resource type="Script" uid="uid://bu4ihkbaa4e1r" path="res://weather/rain.gd" id="5_e3ycq"]
@@ -10,8 +11,10 @@
 [ext_resource type="Script" uid="uid://creicbsv0d4lq" path="res://weather/snow.gd" id="8_ydboc"]
 [ext_resource type="Script" uid="uid://b7cq4hkq05nkt" path="res://weather/blizzard.gd" id="9_rxjn3"]
 [ext_resource type="Script" uid="uid://cg1224vapkg81" path="res://weather/drought.gd" id="10_sgtd7"]
+[ext_resource type="Shader" uid="uid://b428cviuq8d55" path="res://weather/drought.gdshader" id="10_thk6s"]
 [ext_resource type="Script" uid="uid://di4stmryxsvk6" path="res://weather/mist.gd" id="11_hbfyc"]
 [ext_resource type="PackedScene" uid="uid://dpdijbqkcbyg7" path="res://weather/day.tscn" id="12_sqjxv"]
+[ext_resource type="PackedScene" uid="uid://bdtfw5yquayyv" path="res://clock/clock.tscn" id="13_6qlh3"]
 
 [sub_resource type="Gradient" id="Gradient_7mycd"]
 
@@ -25,7 +28,7 @@ color_ramp = SubResource("Gradient_7mycd")
 noise = SubResource("FastNoiseLite_272bh")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lquwl"]
-shader = ExtResource("2_6qlh3")
+shader = ExtResource("2_thk6s")
 shader_parameter/cloud_texture = SubResource("NoiseTexture2D_5vw27")
 shader_parameter/cloudiness = 0.5
 shader_parameter/uv_scale = 0.5
@@ -55,6 +58,56 @@ shader_parameter/colour = Color(1, 1, 1, 1)
 shader_parameter/size = Vector2(0.01, 0.4)
 shader_parameter/amount = 500.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v4dhi"]
+shader = ExtResource("6_w2lxm")
+shader_parameter/count = 500
+shader_parameter/slant = 0.006
+shader_parameter/speed = 10.0
+shader_parameter/blur = 0.0015
+shader_parameter/colour = Color(1, 1, 1, 1)
+shader_parameter/size = Vector2(0.05, 0.05)
+shader_parameter/amount = 500.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_thk6s"]
+shader = ExtResource("6_w2lxm")
+shader_parameter/count = 5000
+shader_parameter/slant = 0.3
+shader_parameter/speed = 20.0
+shader_parameter/blur = 0.002
+shader_parameter/colour = Color(1, 1, 1, 1)
+shader_parameter/size = Vector2(0.02, 0.02)
+shader_parameter/amount = 500.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e3ycq"]
+shader = ExtResource("10_thk6s")
+shader_parameter/shake = 0.015
+shader_parameter/noiseQuality = 250.0
+shader_parameter/noiseIntensity = 0.001
+shader_parameter/offsetIntensity = 0.05
+
+[sub_resource type="Gradient" id="Gradient_v4dhi"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_thk6s"]
+noise_type = 3
+frequency = 0.013
+fractal_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_e3ycq"]
+seamless = true
+color_ramp = SubResource("Gradient_v4dhi")
+noise = SubResource("FastNoiseLite_thk6s")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6qlh3"]
+shader = ExtResource("2_6qlh3")
+shader_parameter/cloud_texture = SubResource("NoiseTexture2D_e3ycq")
+shader_parameter/cloudiness = 3.0
+shader_parameter/uv_scale = 1.0
+shader_parameter/speed = Vector2(0.01, 0)
+shader_parameter/contrast = 1.5
+shader_parameter/cloud_color = Vector4(1, 1, 1, 0.9)
+shader_parameter/sky_color = Vector4(0.4, 0.6, 0.9, 0)
+shader_parameter/amount = 100.0
+
 [node name="Weather" type="Node2D" node_paths=PackedStringArray("weather_scripts")]
 script = ExtResource("1_sqjxv")
 day_sky_color = Color(0.321259, 0.643281, 0.9674, 1)
@@ -68,10 +121,10 @@ weather_scripts = [NodePath("Weathers/Clear"), NodePath("Weathers/Rain"), NodePa
 [node name="Sky" type="ColorRect" parent="."]
 texture_filter = 1
 material = SubResource("ShaderMaterial_lquwl")
-offset_left = -594.0
-offset_top = -546.0
-offset_right = -494.0
-offset_bottom = -446.0
+offset_left = -600.0
+offset_top = -600.0
+offset_right = -500.0
+offset_bottom = -500.0
 scale = Vector2(12, 12)
 mouse_filter = 2
 color = Color(0.0980392, 0.623529, 1, 1)
@@ -156,16 +209,86 @@ color = Color(0.160186, 0.123338, 0.237659, 0.392157)
 [node name="Snow" type="Node" parent="Weathers"]
 script = ExtResource("8_ydboc")
 
+[node name="SnowEffect" type="ColorRect" parent="Weathers/Snow"]
+visible = false
+material = SubResource("ShaderMaterial_v4dhi")
+offset_left = -717.0
+offset_top = -1218.0
+offset_right = -609.0
+offset_bottom = -1107.0
+scale = Vector2(12, 12)
+mouse_filter = 2
+
+[node name="SnowBackground" type="ColorRect" parent="Weathers/Snow"]
+visible = false
+offset_left = -600.0
+offset_top = -600.0
+offset_right = 600.0
+offset_bottom = 600.0
+mouse_filter = 2
+color = Color(0.313726, 0.243137, 0.952941, 0.243137)
+
 [node name="Blizzard" type="Node" parent="Weathers"]
 script = ExtResource("9_rxjn3")
+
+[node name="BlizzardEffect" type="ColorRect" parent="Weathers/Blizzard"]
+visible = false
+material = SubResource("ShaderMaterial_thk6s")
+offset_left = -599.0
+offset_top = -1498.0
+offset_right = -438.0
+offset_bottom = -1364.0
+scale = Vector2(12, 12)
+mouse_filter = 2
+
+[node name="BlizzardBackground" type="ColorRect" parent="Weathers/Blizzard"]
+visible = false
+offset_left = -600.0
+offset_top = -600.0
+offset_right = 600.0
+offset_bottom = 600.0
+mouse_filter = 2
+color = Color(0.108811, 0.128232, 0.759834, 0.392157)
 
 [node name="Drought" type="Node" parent="Weathers"]
 script = ExtResource("10_sgtd7")
 
+[node name="DroughtEffect" type="ColorRect" parent="Weathers/Drought"]
+visible = false
+material = SubResource("ShaderMaterial_e3ycq")
+offset_left = -600.0
+offset_top = -600.0
+offset_right = -500.0
+offset_bottom = -500.0
+scale = Vector2(12, 12)
+mouse_filter = 2
+
+[node name="DroughtBackground" type="ColorRect" parent="Weathers/Drought"]
+visible = false
+offset_left = -600.0
+offset_top = -600.0
+offset_right = 600.0
+offset_bottom = 600.0
+mouse_filter = 2
+color = Color(0.502289, 0.290193, 2.88785e-07, 0.392157)
+
 [node name="Mist" type="Node" parent="Weathers"]
 script = ExtResource("11_hbfyc")
 
+[node name="MistEffect" type="ColorRect" parent="Weathers/Mist"]
+visible = false
+texture_filter = 1
+material = SubResource("ShaderMaterial_6qlh3")
+offset_left = -600.0
+offset_top = -743.0
+offset_right = -500.0
+offset_bottom = -643.0
+scale = Vector2(12, 12)
+mouse_filter = 2
+color = Color(0.0980392, 0.623529, 1, 1)
+
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_left = -576.0
 offset_top = -324.0
 offset_right = 576.0
@@ -174,6 +297,7 @@ mouse_filter = 2
 color = Color(0, 1, 0, 0.14902)
 
 [node name="Forecast" type="Node2D" parent="."]
+texture_filter = 1
 position = Vector2(-556, -306)
 script = ExtResource("2_v4dhi")
 day = ExtResource("12_sqjxv")
@@ -186,3 +310,8 @@ mouse_filter = 2
 color = Color(0, 0, 0, 0.305882)
 
 [node name="Days" type="Node2D" parent="Forecast"]
+
+[node name="Clock" parent="." instance=ExtResource("13_6qlh3")]
+texture_filter = 1
+position = Vector2(251, -260)
+scale = Vector2(2, 2)
