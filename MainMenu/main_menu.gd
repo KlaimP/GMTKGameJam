@@ -1,11 +1,11 @@
 extends Control
 
 func _ready():
-	$VBoxContainer/StartButton.pressed.connect(_on_start_pressed)
+	$VBoxContainer/StartButton.pressed.connect(_on_play_pressed)
 	$VBoxContainer/SettingsButton.pressed.connect(_on_settings_pressed)
 	$VBoxContainer/QuitButton.pressed.connect(_on_quit_pressed)
 
-func _on_start_pressed():
+func _on_play_pressed():
 	get_tree().change_scene_to_file("res://main.tscn")
 
 func _on_settings_pressed():

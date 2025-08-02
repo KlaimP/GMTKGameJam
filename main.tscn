@@ -1,12 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://d3ipapou67dv5"]
+[gd_scene load_steps=12 format=3 uid="uid://d3ipapou67dv5"]
 
-[ext_resource type="Script" uid="uid://ct0nbvb1ubokq" path="res://main.gd" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://ct0nbvb1ubokq" path="res://main.gd" id="1_4c57u"]
 [ext_resource type="Texture2D" uid="uid://bwgy81c8o6yrn" path="res://grass texture.jpg" id="2_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://cpkqw3to1xuv1" path="res://weather/weather.tscn" id="3_7mycd"]
 [ext_resource type="Texture2D" uid="uid://cpghq1ebxwpya" path="res://soil/soil texture small.jpg" id="5_5vw27"]
 [ext_resource type="PackedScene" uid="uid://bcj01evqynl6h" path="res://plants/plant.tscn" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://cmhnueu6sm7wj" path="res://soil/tile.tscn" id="6_kek77"]
-[ext_resource type="Script" uid="uid://bsxvpb0akspjn" path="res://plant_manager.gd" id="9_kek77"]
+[ext_resource type="Script" path="res://plant_manager.gd" id="9_kek77"]
+[ext_resource type="PackedScene" uid="uid://bhcyh3eh2coh4" path="res://Store/store.tscn" id="10_efxa6"]
 [ext_resource type="PackedScene" uid="uid://vymwh2cu17ai" path="res://soil/soil.tscn" id="17_074og"]
 [ext_resource type="PackedScene" uid="uid://dujnypkjmjp4y" path="res://UI/inventory.tscn" id="17_yaehf"]
 
@@ -14,8 +15,7 @@
 size = Vector2(1200, 250)
 
 [node name="Main" type="Node2D"]
-script = ExtResource("1_0xm2m")
-night_color = Color(0.133649, 0.0446107, 0.391447, 1)
+script = ExtResource("1_4c57u")
 
 [node name="Weather" parent="." instance=ExtResource("3_7mycd")]
 unique_name_in_owner = true
@@ -101,7 +101,23 @@ script = ExtResource("9_kek77")
 selected_card = ExtResource("6_7mycd")
 where_plant = NodePath("../Plants")
 
+[node name="OpenStoreButton" type="Button" parent="."]
+offset_left = -576.0
+offset_top = -64.0
+offset_right = -512.0
+text = "STORE"
+
+[node name="Store" parent="." node_paths=PackedStringArray("inventory") instance=ExtResource("10_efxa6")]
+visible = false
+z_index = 100
+offset_left = -8.0
+offset_top = -8.0
+offset_right = -8.0
+offset_bottom = -8.0
+inventory = NodePath("../Inventory")
+
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
 [connection signal="value_changed" from="DayRatio" to="." method="_on_day_ratio_value_changed"]
 [connection signal="value_changed" from="Cloudiness" to="." method="_on_cloudiness_value_changed"]
+[connection signal="pressed" from="OpenStoreButton" to="Store" method="_on_open_store_button_pressed"]

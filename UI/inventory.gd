@@ -13,3 +13,11 @@ func _on_button_button_down() -> void:
 	slot.itemName = "Bebebe"
 	inventory.append(slot)
 	$BoxContainer/VBoxContainer.add_child(slot)
+
+func add_card(card: Card):
+	if (inventory.size() >= max_slots):
+		return
+	var slot = card_slot.instantiate()
+	slot.itemName = "Bebebe"
+	inventory.append(slot)
+	$BoxContainer/VBoxContainer.add_child(slot)

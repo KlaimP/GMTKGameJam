@@ -2,7 +2,7 @@ extends Control
 
 var money: int = 5 # кол-во денег
 
-@export var purchases: Array [Card] # массив карт
+@export var inventory: Inventory # массив карт
 
 func _ready():
 	update_currency_label()
@@ -17,11 +17,17 @@ func buy_item(cost: int, item_name: String):
 	if money >= cost:
 		money -= cost
 		var plant: Card
-		purchases.append(plant) # добавление карты (входные параметры в класс?)
+		inventory.add_card(plant) # добавление карты (входные параметры в класс?)
 		update_currency_label()
 
 func update_currency_label():
 	$MoneyLabel.text = "MONEY: " + str(money)
 
 func _on_back_pressed():
-	get_tree().change_scene_to_file("res://main.tscn")
+	self.hide()
+	$"../OpenStoreButton".show()
+
+
+func _on_open_store_button_pressed() -> void:
+	self.show()
+	$"../OpenStoreButton".hide()
