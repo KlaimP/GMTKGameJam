@@ -6,12 +6,14 @@ class_name Card
 @export var texture: Texture2D
 
 @export var hover_scale: Vector2 = Vector2.ONE * 1.2  # Во сколько раз увеличиваем
-@export var anim_duration: float = 0.1               # Время анимации
+@export var anim_duration: float = 0.1                # Время анимации
+@export var plant: Plant
 
 var _orig_scale: Vector2
 var _tween: Tween
 
 func _ready():
+	$Sprite.texture = plant.growth_textures.back()
 	_orig_scale = scale
 	_tween = create_tween()
 

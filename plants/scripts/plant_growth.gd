@@ -1,5 +1,6 @@
 extends Node2D
 
+class_name Plant
 ###########################################################
 @export_group("Plant Properties")
 @export var growth_textures : Array[Texture2D] # Текстуры растений (Количество текстур = количеству стадий)
@@ -38,6 +39,7 @@ extends Node2D
 @export var is_day: bool = true # День или ночь
 @export var is_rain: bool = false # Идет ли дождь
 @export var growth_boosters: float = 1. # Бустер от удобрений
+@export var where_plant: Sprite2D
 
 ###########################################################
 var can_grow: bool = true # Может ли расти растение

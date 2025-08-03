@@ -1,13 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://djj3qhllkvssp"]
+[gd_scene load_steps=5 format=3 uid="uid://djj3qhllkvssp"]
 
 [ext_resource type="Script" uid="uid://c38vqcrodejoq" path="res://UI/card.gd" id="1_ww2gn"]
-[ext_resource type="Texture2D" uid="uid://c075oc5rs5a56" path="res://UI/Civilian_card_version3_pic1.png" id="2_gjfx2"]
+[ext_resource type="Texture2D" uid="uid://ddula6q0qmimo" path="res://UI/card.png" id="2_gjfx2"]
+[ext_resource type="Texture2D" uid="uid://70m6tujx7g0w" path="res://plants/sprites/gib/gib_3.png" id="3_d460q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d460q"]
 
 [node name="Card" type="Panel"]
 custom_minimum_size = Vector2(190, 120)
 offset_right = 60.0
 offset_bottom = 92.0
 pivot_offset = Vector2(190, 60)
+theme_override_styles/panel = SubResource("StyleBoxEmpty_d460q")
 script = ExtResource("1_ww2gn")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -16,6 +20,11 @@ offset_right = 190.0
 offset_bottom = 120.0
 texture = ExtResource("2_gjfx2")
 expand_mode = 1
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(46, 60)
+scale = Vector2(2.70313, 2.70313)
+texture = ExtResource("3_d460q")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

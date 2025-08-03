@@ -6,11 +6,11 @@ var money: int = 5 # кол-во денег
 
 func _ready():
 	update_currency_label()
-
+	
 	$Item1.pressed.connect(func(): buy_item(1, "item_name1"))
 	$Item2.pressed.connect(func(): buy_item(1, "item_name1"))
 	$Item3.pressed.connect(func(): buy_item(1, "item_name1"))
-
+	
 	$BackButton.pressed.connect(_on_back_pressed)
 
 func buy_item(cost: int, item_name: String):
@@ -26,7 +26,6 @@ func update_currency_label():
 func _on_back_pressed():
 	self.hide()
 	$"../OpenStoreButton".show()
-
 
 func _on_open_store_button_pressed() -> void:
 	self.show()
