@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="PlantType" load_steps=5 format=3 uid="uid://ugstd3taumge"]
+
+[ext_resource type="Texture2D" uid="uid://d13kewypk32kh" path="res://plants/sprites/cucold/3_1.png" id="1_m3ysv"]
+[ext_resource type="Script" uid="uid://bswqyjrokr8wb" path="res://plants/plant_types.gd" id="1_myqw0"]
+[ext_resource type="Texture2D" uid="uid://cs6lrx1n7pnpv" path="res://plants/sprites/cucold/3_2.png" id="2_rqjyx"]
+[ext_resource type="Texture2D" uid="uid://b333gx3o15g4" path="res://plants/sprites/cucold/3_3.png" id="3_v8dob"]
+
+[resource]
+script = ExtResource("1_myqw0")
+growth_textures = Array[Texture2D]([ExtResource("1_m3ysv"), ExtResource("2_rqjyx"), ExtResource("3_v8dob")])
+growth_stage_duration = Array[float]([3.0, 2.0, 6.0])
+speed = 0.1
+optimal_moisture = Vector2(0.1, 0.5)
+energy_conservation = 0.1
+required_water = 0.01
+absorption_rate = 0.3
+max_water = 4.0
+is_day_plant = true
+max_health = 70
+like_rain = 1.0
+metadata/_custom_type_script = "uid://bswqyjrokr8wb"

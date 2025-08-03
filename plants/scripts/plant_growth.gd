@@ -13,6 +13,7 @@ extends Node2D
 @export var is_day_plant: bool = true # Дневное ли это растение
 @export var max_health: int = 30 # Максимальное количество жизни у растения
 @export var like_rain : float = 1. # Насколько растение любит дождь
+@export var plant_type: PlantType
 
 ###########################################################
 @export_group("Spatial")
@@ -49,6 +50,24 @@ var is_dormant: bool = false # Спячка у растения
 func _ready() -> void:
 	$Texture.texture = growth_textures[0]
 	size.resize(growth_textures.size())
+	self.set_type(ResourceLoader.load("res://plants/types/carnifex.tres"))
+
+
+func set_type(type: PlantType):
+	plant_type = type
+	growth_textures = plant_type.growth_textures
+	growth_stage_duration = plant_type.growth_stage_duration
+	speed = plant_type.speed
+	optimal_moisture = plant_type.optimal_moisture
+	energy_conservation = plant_type.energy_conservation
+	required_water = plant_type.required_water
+	absorption_rate = plant_type.absorption_rate
+	max_water = plant_type.max_water
+	is_day_plant = plant_type.is_day_plant
+	max_health = plant_type.max_health
+	like_rain = plant_type.like_rain
+	$Texture.texture = growth_textures[stage]
+
 
 func _process(delta: float) -> void:
 	if (can_grow):
@@ -61,7 +80,7 @@ func absorb_water(delta: float) -> void:
 
 func die_process(delta: float) -> void:
 	if (health <= 0):
-		pass
+		queue_free()
 	
 	if (dying_water || dying_growth):
 		health -= 1 * delta

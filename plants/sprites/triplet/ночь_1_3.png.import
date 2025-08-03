@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://r3fixqbfkdxn"
-path="res://.godot/imported/ночь_2_1.png-8bf50cafefc81b7148c41c26758075de.ctex"
+uid="uid://c0ynx3sr4w1l7"
+path="res://.godot/imported/ночь_1_3.png-260726f86664fd93c7524ca79a29c8e5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://plants/sprites/ночь_2_1.png"
-dest_files=["res://.godot/imported/ночь_2_1.png-8bf50cafefc81b7148c41c26758075de.ctex"]
+source_file="res://plants/sprites/triplet/ночь_1_3.png"
+dest_files=["res://.godot/imported/ночь_1_3.png-260726f86664fd93c7524ca79a29c8e5.ctex"]
 
 [params]
 
