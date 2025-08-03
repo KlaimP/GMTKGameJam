@@ -1,8 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bhcyh3eh2coh4"]
+[gd_scene load_steps=2 format=3 uid="uid://bhcyh3eh2coh4"]
 
 [ext_resource type="Script" uid="uid://drtf4fxq1g7kg" path="res://Store/store.gd" id="1_fl8b2"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_fl8b2"]
 
 [node name="Store" type="Control"]
 layout_mode = 3
@@ -15,38 +13,29 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fl8b2")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
-offset_left = -576.0
-offset_top = -324.0
-offset_right = 584.0
-offset_bottom = 332.0
-mouse_filter = 2
-color = Color(0, 0, 0, 0.392157)
-
 [node name="Item1" type="Button" parent="."]
 layout_mode = 0
-offset_left = -376.0
+offset_left = -384.0
 offset_top = -132.0
-offset_right = -248.0
+offset_right = -256.0
 offset_bottom = 124.0
 text = "PLANT1
 COST - 1"
 
 [node name="Item2" type="Button" parent="."]
 layout_mode = 0
-offset_left = -56.0
+offset_left = -64.0
 offset_top = -132.0
-offset_right = 72.0
+offset_right = 64.0
 offset_bottom = 124.0
 text = "PLANT2
 COST - 1"
 
 [node name="Item3" type="Button" parent="."]
 layout_mode = 0
-offset_left = 264.0
+offset_left = 256.0
 offset_top = -132.0
-offset_right = 392.0
+offset_right = 384.0
 offset_bottom = 124.0
 text = "PLANT3
 COST - 1"
@@ -56,20 +45,19 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 456.0
+offset_left = 448.0
 offset_top = -324.0
-offset_right = 584.0
+offset_right = 576.0
 offset_bottom = -284.0
 grow_horizontal = 0
 text = "MONEY"
-label_settings = SubResource("LabelSettings_fl8b2")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="BackButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = -560.0
-offset_top = 276.0
-offset_right = -460.0
-offset_bottom = 326.0
+offset_left = -576.0
+offset_top = 274.0
+offset_right = -476.0
+offset_bottom = 324.0
 text = "BACK"
