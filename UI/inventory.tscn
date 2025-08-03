@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dujnypkjmjp4y"]
+[gd_scene load_steps=6 format=3 uid="uid://dujnypkjmjp4y"]
 
 [ext_resource type="Script" uid="uid://bsoddv0om7y68" path="res://UI/inventory.gd" id="1_23vm5"]
+[ext_resource type="PackedScene" uid="uid://djj3qhllkvssp" path="res://UI/card.tscn" id="2_7g8kd"]
+[ext_resource type="PackedScene" uid="uid://bcj01evqynl6h" path="res://plants/plant.tscn" id="3_0knst"]
 [ext_resource type="Script" uid="uid://f60kagp71ruk" path="res://UI/circle_container.gd" id="3_fxcd2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fxcd2"]
@@ -17,7 +19,9 @@ corner_radius_bottom_right = 10
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_23vm5")
+card_slot = ExtResource("2_7g8kd")
 max_slots = 5
+plants = ExtResource("3_0knst")
 
 [node name="Background" type="ColorRect" parent="."]
 visible = false

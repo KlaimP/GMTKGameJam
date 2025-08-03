@@ -20,14 +20,6 @@ script = ExtResource("1_4c57u")
 [node name="Weather" parent="." instance=ExtResource("3_7mycd")]
 unique_name_in_owner = true
 
-[node name="Soil" parent="." instance=ExtResource("17_074og")]
-unique_name_in_owner = true
-position = Vector2(-575, 190)
-tile_texture = ExtResource("5_5vw27")
-grid_width = 15
-grid_height = 3
-tile = ExtResource("6_kek77")
-
 [node name="Grass" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 texture_filter = 1
@@ -35,6 +27,14 @@ texture_repeat = 1
 position = Vector2(5, 431)
 scale = Vector2(1.78676, 0.936765)
 texture = ExtResource("2_1bvp3")
+
+[node name="Soil" parent="." instance=ExtResource("17_074og")]
+unique_name_in_owner = true
+position = Vector2(-575, 190)
+tile_texture = ExtResource("5_5vw27")
+grid_width = 15
+grid_height = 3
+tile = ExtResource("6_kek77")
 
 [node name="Plants" type="Node2D" parent="."]
 unique_name_in_owner = true
