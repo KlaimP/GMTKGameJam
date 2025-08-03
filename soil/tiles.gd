@@ -23,7 +23,7 @@ func create_tile_grid():
 		for x in grid_width:
 			var tile := tile.instantiate()
 			tile.texture = tile_texture
-			tile.modulate = Color(0.1, 0.1, 0.1) * (grid_height - y)
+			#tile.modulate = Color(0.1, 0.1, 0.1) * (grid_height - y)
 			tile.position = Vector2(x, y) * tile_size
 			tile.wetness = randf_range(0.1, 1)
 			tile.capacity = 1
