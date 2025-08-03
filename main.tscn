@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cpghq1ebxwpya" path="res://soil/soil texture small.jpg" id="5_5vw27"]
 [ext_resource type="PackedScene" uid="uid://bcj01evqynl6h" path="res://plants/plant.tscn" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://cmhnueu6sm7wj" path="res://soil/tile.tscn" id="6_kek77"]
-[ext_resource type="Script" path="res://plant_manager.gd" id="9_kek77"]
+[ext_resource type="Script" uid="uid://bsxvpb0akspjn" path="res://plant_manager.gd" id="9_kek77"]
 [ext_resource type="PackedScene" uid="uid://bhcyh3eh2coh4" path="res://Store/store.tscn" id="10_efxa6"]
 [ext_resource type="PackedScene" uid="uid://vymwh2cu17ai" path="res://soil/soil.tscn" id="17_074og"]
 [ext_resource type="PackedScene" uid="uid://dujnypkjmjp4y" path="res://UI/inventory.tscn" id="17_yaehf"]

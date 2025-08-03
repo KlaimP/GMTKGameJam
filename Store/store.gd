@@ -2,7 +2,7 @@ extends Control
 
 var money: int = 5 # кол-во денег
 
-@export var inventory: Inventory # массив карт
+@export var inventory: Inventory # инвентарь
 
 func _ready():
 	update_currency_label()
@@ -14,7 +14,7 @@ func _ready():
 	$BackButton.pressed.connect(_on_back_pressed)
 
 func buy_item(cost: int, item_name: String):
-	if money >= cost:
+	if money >= cost and inventory.inventory.size() != inventory.max_slots:
 		money -= cost
 		var plant: Card
 		inventory.add_card(plant) # добавление карты (входные параметры в класс?)
