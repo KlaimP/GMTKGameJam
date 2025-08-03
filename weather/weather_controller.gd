@@ -5,7 +5,7 @@ class_name WeatherController
 var cloudiness: float = 0.5
 var cloud_speed: float = 0.2
 
-var temperature: float = 23.
+var temperature: float = 15.
 var temp_change: float = 0.5
 var temp_edges: Vector2 = Vector2(-15., 35.)
 
@@ -41,6 +41,8 @@ var time_passed: float = 0.
 var current_weather: int = 0
 @export var weather_scripts: Array[Weather]
 
+var arrow_diff = 0.001
+
 
 func _ready() -> void:
 	Events.day_ends.connect(next_weather)
@@ -75,22 +77,41 @@ func update(_time: float, _cloudiness: float, delta: float):
 	
 	
 	
-	$Clock.update(_time)
+	%Clock.update(_time)
 	
 	var weather: Weather = weather_scripts[current_weather]
 	
-	cloudiness = weather.change_cloudiness(cloudiness, _cloudiness, cloud_speed, delta)
-	$Cloudiness.text = str(snapped(cloudiness, 0.01))
+	var new = weather.change_cloudiness(cloudiness, _cloudiness, cloud_speed, delta)
+	change_arrow(0 if abs(new-cloudiness) < arrow_diff * delta else (-1 if new < cloudiness else 1), %CloudArrow)
+	cloudiness = new
+	%Cloudiness.text = str(snapped(cloudiness, 0.01))
 	
-	temperature = weather.change_temperature(temperature, temp_edges, cloudiness, temp_change, time, delta)
-	$Temperature.text = str(snapped(temperature, 0.1)) + " °C"
+	new = weather.change_temperature(temperature, temp_edges, cloudiness, temp_change, time, delta)
+	change_arrow(0 if abs(new-temperature) < arrow_diff * delta else (-1 if new < temperature else 1), %TemperatureArrow)
+	temperature = new
+	%Temperature.text = str(snapped(temperature, 0.1)) + " °C"
 	
-	moisture = weather.change_moisture(time, cloudiness, moisture, moisture_speed, temperature, temp_edges, delta)
-	$Moisture.text = str(int(moisture * 100)) + "%"
+	new = weather.change_moisture(time, cloudiness, moisture, moisture_speed, temperature, temp_edges, delta)
+	change_arrow(0 if abs(new-moisture) < arrow_diff * delta else (-1 if new < moisture else 1), %MoistureArrow)
+	moisture = new
+	%Moisture.text = str(int(moisture * 100)) + "%"
 	
 	%Soil.add_moisture(weather.get_soil_moisutre())
 	
 	change_shader(time, cloudiness)
+
+
+func change_arrow(direction: int, arrow: Node2D):
+	if direction == 0:
+		arrow.hide()
+	if direction > 0:
+		arrow.show()
+		arrow.modulate = Color.LAWN_GREEN
+		arrow.rotation = 0.
+	if direction < 0:
+		arrow.show()
+		arrow.modulate = Color.DARK_RED
+		arrow.rotation = PI
 
 
 func next_weather():
@@ -102,7 +123,8 @@ func next_weather():
 	for i in average[avg_types.CLOUDINESS]: cloud_sum += i
 	var moist_sum = 0.
 	for i in average[avg_types.MOISTURE]: moist_sum += i
-	$Forecast.next_weather(ratio_sum/average_points, temp_sum/average_points,
+	$Forecast.next_weather((ratio_sum/average_points + 1.)/2.,
+							remap(temp_sum/average_points, temp_edges.x, temp_edges.y, 0., 1.),
 							cloud_sum/average_points, moist_sum/average_points)
 
 
