@@ -96,23 +96,23 @@ scale = Vector2(3, 3)
 [node name="Grass2" type="Sprite2D" parent="Grasses"]
 texture = ExtResource("6_efxa6")
 
-[node name="Grass3" type="Sprite2D" parent="Grasses"]
-position = Vector2(65, -2.54313e-06)
-texture = ExtResource("6_efxa6")
-
-[node name="Grass2" type="Sprite2D" parent="Grasses/Grass3"]
+[node name="Grass3" type="Sprite2D" parent="Grasses/Grass2"]
 position = Vector2(65, 0)
 texture = ExtResource("6_efxa6")
 
-[node name="Grass2" type="Sprite2D" parent="Grasses/Grass3/Grass2"]
+[node name="Grass2" type="Sprite2D" parent="Grasses/Grass2/Grass3"]
 position = Vector2(65, 0)
 texture = ExtResource("6_efxa6")
 
-[node name="Grass2" type="Sprite2D" parent="Grasses/Grass3/Grass2/Grass2"]
+[node name="Grass2" type="Sprite2D" parent="Grasses/Grass2/Grass3/Grass2"]
+position = Vector2(65, 0)
+texture = ExtResource("6_efxa6")
+
+[node name="Grass2" type="Sprite2D" parent="Grasses/Grass2/Grass3/Grass2/Grass2"]
 position = Vector2(64.6667, 0)
 texture = ExtResource("6_efxa6")
 
-[node name="Grass2" type="Sprite2D" parent="Grasses/Grass3/Grass2/Grass2/Grass2"]
+[node name="Grass2" type="Sprite2D" parent="Grasses/Grass2/Grass3/Grass2/Grass2/Grass2"]
 position = Vector2(64.6667, 0)
 texture = ExtResource("6_efxa6")
 
