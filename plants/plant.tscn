@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://bcj01evqynl6h"]
 
 [ext_resource type="Script" uid="uid://cywmr80mxn3pw" path="res://plants/scripts/plant_growth.gd" id="1_mbetm"]
-[ext_resource type="Texture2D" uid="uid://cvnj6l0jp0kex" path="res://plants/gib/gib_1.png" id="2_12g6i"]
-[ext_resource type="Texture2D" uid="uid://bi61gtnh55t0k" path="res://plants/gib/gib_2.png" id="3_nb4ve"]
-[ext_resource type="Texture2D" uid="uid://70m6tujx7g0w" path="res://plants/gib/gib_3.png" id="4_h7iki"]
+[ext_resource type="Texture2D" uid="uid://cvnj6l0jp0kex" path="res://plants/sprites/gib/gib_1.png" id="2_12g6i"]
+[ext_resource type="Texture2D" uid="uid://bi61gtnh55t0k" path="res://plants/sprites/gib/gib_2.png" id="3_nb4ve"]
+[ext_resource type="Texture2D" uid="uid://70m6tujx7g0w" path="res://plants/sprites/gib/gib_3.png" id="4_h7iki"]
 [ext_resource type="Shader" uid="uid://bwhukbl5lcct3" path="res://plants/wiggle_plant.gdshader" id="5_12g6i"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nb4ve"]

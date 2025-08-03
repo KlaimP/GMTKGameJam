@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bi61gtnh55t0k"
-path="res://.godot/imported/gib_2.png-37dcc964a0ff3314ede2ebf1f5e9bcd6.ctex"
+uid="uid://70m6tujx7g0w"
+path="res://.godot/imported/gib_3.png-697a93e89fbe365942c79ccd1878c6f5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://plants/gib/gib_2.png"
-dest_files=["res://.godot/imported/gib_2.png-37dcc964a0ff3314ede2ebf1f5e9bcd6.ctex"]
+source_file="res://plants/sprites/gib/gib_3.png"
+dest_files=["res://.godot/imported/gib_3.png-697a93e89fbe365942c79ccd1878c6f5.ctex"]
 
 [params]
 
