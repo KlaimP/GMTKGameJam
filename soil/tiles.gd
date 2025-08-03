@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var tile_texture : Texture2D
-@export var tile_size := Vector2(32, 32) # размер тайла
+@export var tile_size := Vector2(86, 86) # размер тайла
 @export var grid_width : int = 16 # длина
 @export var grid_height : int = 4 # ширина
 ########################################
