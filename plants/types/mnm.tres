@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="PlantType" load_steps=5 format=3 uid="uid://blgenfwqusd8y"]
+
+[ext_resource type="Texture2D" uid="uid://r3fixqbfkdxn" path="res://plants/sprites/mnm/ночь_2_1.png" id="1_mbf3a"]
+[ext_resource type="Texture2D" uid="uid://cx0g2cuihbanr" path="res://plants/sprites/mnm/ночь_2_2.png" id="2_8o8dj"]
+[ext_resource type="Texture2D" uid="uid://wo60ggrup2l0" path="res://plants/sprites/mnm/ночь_2_3.png" id="3_wfpcb"]
+[ext_resource type="Script" uid="uid://bswqyjrokr8wb" path="res://plants/plant_types.gd" id="4_mgls4"]
+
+[resource]
+script = ExtResource("4_mgls4")
+growth_textures = Array[Texture2D]([ExtResource("1_mbf3a"), ExtResource("2_8o8dj"), ExtResource("3_wfpcb")])
+growth_stage_duration = Array[float]([0.5, 0.5, 5.0])
+speed = 0.3
+optimal_moisture = Vector2(0.3, 0.8)
+energy_conservation = 0.2
+required_water = 0.05
+absorption_rate = 0.15
+max_water = 1.0
+is_day_plant = false
+max_health = 10
+like_rain = 1.0
+metadata/_custom_type_script = "uid://bswqyjrokr8wb"

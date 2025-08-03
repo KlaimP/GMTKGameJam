@@ -141,6 +141,7 @@ offset_bottom = -168.0
 
 [node name="Clear" type="Node" parent="Weathers"]
 script = ExtResource("3_v4dhi")
+moist_change = 0.9
 
 [node name="Rain" type="Node" parent="Weathers"]
 script = ExtResource("5_e3ycq")
