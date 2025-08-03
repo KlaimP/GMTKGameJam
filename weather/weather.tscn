@@ -1,9 +1,10 @@
-[gd_scene load_steps=29 format=3 uid="uid://cpkqw3to1xuv1"]
+[gd_scene load_steps=30 format=3 uid="uid://cpkqw3to1xuv1"]
 
 [ext_resource type="Script" uid="uid://bw376w6tdgjlo" path="res://weather/weather_controller.gd" id="1_sqjxv"]
 [ext_resource type="Shader" uid="uid://b408q7rw31t83" path="res://clock/mist.gdshader" id="2_6qlh3"]
 [ext_resource type="Shader" uid="uid://uvkjilnn3qjc" path="res://clock/sky.gdshader" id="2_thk6s"]
 [ext_resource type="Script" uid="uid://dyedtp8ecr2ye" path="res://weather/forecast.gd" id="2_v4dhi"]
+[ext_resource type="PackedScene" uid="uid://o34uoreun7ie" path="res://weather/arrow.tscn" id="3_e3ycq"]
 [ext_resource type="Script" uid="uid://l2pehcctiwxc" path="res://weather/clear.gd" id="3_v4dhi"]
 [ext_resource type="Script" uid="uid://bu4ihkbaa4e1r" path="res://weather/rain.gd" id="5_e3ycq"]
 [ext_resource type="Shader" uid="uid://bqpc0l0ydsrk3" path="res://weather/rain.gdshader" id="6_w2lxm"]
@@ -128,27 +129,6 @@ offset_bottom = -500.0
 scale = Vector2(12, 12)
 mouse_filter = 2
 color = Color(0.0980392, 0.623529, 1, 1)
-
-[node name="Temperature" type="Label" parent="."]
-offset_left = 336.0
-offset_top = -220.0
-offset_right = 376.0
-offset_bottom = -197.0
-text = "23 °C"
-
-[node name="Moisture" type="Label" parent="."]
-offset_left = 406.0
-offset_top = -220.0
-offset_right = 446.0
-offset_bottom = -197.0
-text = "50%"
-
-[node name="Cloudiness" type="Label" parent="."]
-offset_left = 459.0
-offset_top = -220.0
-offset_right = 499.0
-offset_bottom = -197.0
-text = "0.1"
 
 [node name="W" type="Label" parent="."]
 unique_name_in_owner = true
@@ -296,6 +276,74 @@ offset_bottom = 324.0
 mouse_filter = 2
 color = Color(0, 1, 0, 0.14902)
 
+[node name="Background" type="ColorRect" parent="."]
+offset_left = 256.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = -198.0
+color = Color(0, 0, 0, 0.717647)
+
+[node name="Cloudiness" type="Label" parent="Background"]
+unique_name_in_owner = true
+offset_left = 249.0
+offset_top = 5.0
+offset_right = 289.0
+offset_bottom = 28.0
+text = "0.1"
+
+[node name="CloudArrow" parent="Background/Cloudiness" instance=ExtResource("3_e3ycq")]
+unique_name_in_owner = true
+position = Vector2(-7, 11)
+
+[node name="Label" type="Label" parent="Background/Cloudiness"]
+layout_mode = 0
+offset_left = -121.0
+offset_right = -37.0
+offset_bottom = 23.0
+text = "Cloudiness"
+
+[node name="Moisture" type="Label" parent="Background"]
+unique_name_in_owner = true
+offset_left = 249.0
+offset_top = 29.0
+offset_right = 289.0
+offset_bottom = 52.0
+text = "50%"
+
+[node name="MoistureArrow" parent="Background/Moisture" instance=ExtResource("3_e3ycq")]
+unique_name_in_owner = true
+position = Vector2(-7, 11)
+
+[node name="Label" type="Label" parent="Background/Moisture"]
+offset_left = -121.0
+offset_right = -19.0
+offset_bottom = 23.0
+text = "Moisture"
+
+[node name="Temperature" type="Label" parent="Background"]
+unique_name_in_owner = true
+offset_left = 249.0
+offset_top = 51.0
+offset_right = 289.0
+offset_bottom = 74.0
+text = "23 °C"
+
+[node name="TemperatureArrow" parent="Background/Temperature" instance=ExtResource("3_e3ycq")]
+unique_name_in_owner = true
+position = Vector2(-7, 12)
+
+[node name="Label" type="Label" parent="Background/Temperature"]
+offset_left = -120.0
+offset_right = -18.0
+offset_bottom = 23.0
+text = "Temperature"
+
+[node name="Clock" parent="Background" instance=ExtResource("13_6qlh3")]
+unique_name_in_owner = true
+texture_filter = 1
+position = Vector2(63, 63)
+scale = Vector2(2, 2)
+
 [node name="Forecast" type="Node2D" parent="."]
 texture_filter = 1
 position = Vector2(-556, -306)
@@ -310,8 +358,3 @@ mouse_filter = 2
 color = Color(0, 0, 0, 0.305882)
 
 [node name="Days" type="Node2D" parent="Forecast"]
-
-[node name="Clock" parent="." instance=ExtResource("13_6qlh3")]
-texture_filter = 1
-position = Vector2(251, -260)
-scale = Vector2(2, 2)

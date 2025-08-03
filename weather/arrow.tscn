@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://o34uoreun7ie"]
+
+[ext_resource type="Texture2D" uid="uid://dvr0vsbycvpnm" path="res://weather/sprites/arrow.png" id="1_eshne"]
+[ext_resource type="Shader" uid="uid://brbeafuprq8d6" path="res://weather/highlight.gdshader" id="1_smcib"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eshne"]
+shader = ExtResource("1_smcib")
+shader_parameter/Line_Smoothness = 0.045
+shader_parameter/Line_Width = 0.15
+shader_parameter/Brightness = 5.0
+shader_parameter/Rotation_deg = 90.0
+shader_parameter/Distortion = 1.8
+shader_parameter/Speed = 0.4
+shader_parameter/Position = 0.0
+shader_parameter/Position_Min = 0.25
+shader_parameter/Position_Max = 0.5
+shader_parameter/Alpha = 1.0
+shader_parameter/surface = ExtResource("1_eshne")
+
+[node name="Arrow" type="Sprite2D"]
+material = SubResource("ShaderMaterial_eshne")
+texture = ExtResource("1_eshne")
+
+[node name="Arrow" type="Sprite2D" parent="."]
+texture = ExtResource("1_eshne")
