@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://cmhnueu6sm7wj"]
 
-[ext_resource type="Texture2D" uid="uid://cpghq1ebxwpya" path="res://soil/soil texture small.jpg" id="1_pjnyc"]
+[ext_resource type="Texture2D" uid="uid://dtp4ii1pcp5jd" path="res://soil/sprites/soil.png" id="1_pjnyc"]
 [ext_resource type="Script" uid="uid://c6vrtrwaryjew" path="res://tile.gd" id="1_wx4qk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fwdn3"]
-size = Vector2(86, 86)
+size = Vector2(32, 32)
 
 [node name="Tile" type="Sprite2D"]
 texture = ExtResource("1_pjnyc")

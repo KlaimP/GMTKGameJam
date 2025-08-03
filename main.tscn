@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://d3ipapou67dv5"]
+[gd_scene load_steps=13 format=3 uid="uid://d3ipapou67dv5"]
 
 [ext_resource type="Script" uid="uid://ct0nbvb1ubokq" path="res://main.gd" id="1_4c57u"]
 [ext_resource type="Texture2D" uid="uid://bwgy81c8o6yrn" path="res://grass texture.jpg" id="2_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://cpkqw3to1xuv1" path="res://weather/weather.tscn" id="3_7mycd"]
-[ext_resource type="Texture2D" uid="uid://cpghq1ebxwpya" path="res://soil/soil texture small.jpg" id="5_5vw27"]
+[ext_resource type="Texture2D" uid="uid://dtp4ii1pcp5jd" path="res://soil/sprites/soil.png" id="6_4c57u"]
 [ext_resource type="PackedScene" uid="uid://bcj01evqynl6h" path="res://plants/plant.tscn" id="6_7mycd"]
+[ext_resource type="Texture2D" uid="uid://c0ho2rqqavanc" path="res://soil/sprites/grass.png" id="6_efxa6"]
 [ext_resource type="PackedScene" uid="uid://cmhnueu6sm7wj" path="res://soil/tile.tscn" id="6_kek77"]
 [ext_resource type="Script" uid="uid://bsxvpb0akspjn" path="res://plant_manager.gd" id="9_kek77"]
 [ext_resource type="PackedScene" uid="uid://bhcyh3eh2coh4" path="res://Store/store.tscn" id="10_efxa6"]
@@ -16,17 +17,11 @@ size = Vector2(1200, 250)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_4c57u")
+night_color = null
+day_color = null
 
 [node name="Weather" parent="." instance=ExtResource("3_7mycd")]
 unique_name_in_owner = true
-
-[node name="Soil" parent="." instance=ExtResource("17_074og")]
-unique_name_in_owner = true
-position = Vector2(-575, 190)
-tile_texture = ExtResource("5_5vw27")
-grid_width = 15
-grid_height = 3
-tile = ExtResource("6_kek77")
 
 [node name="Grass" type="Sprite2D" parent="."]
 unique_name_in_owner = true
@@ -36,18 +31,18 @@ position = Vector2(5, 431)
 scale = Vector2(1.78676, 0.936765)
 texture = ExtResource("2_1bvp3")
 
+[node name="Soil" parent="." instance=ExtResource("17_074og")]
+unique_name_in_owner = true
+position = Vector2(-575, 190)
+tile_texture = ExtResource("6_4c57u")
+tile_size = Vector2(86, 86)
+grid_width = 15
+grid_height = 3
+tile = ExtResource("6_kek77")
+
 [node name="Plants" type="Node2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(-577, 115)
-
-[node name="Time" type="Label" parent="."]
-unique_name_in_owner = true
-offset_left = -563.0
-offset_top = 224.0
-offset_right = -472.0
-offset_bottom = 312.0
-theme_override_font_sizes/font_size = 64
-text = "1.0"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -115,6 +110,41 @@ offset_top = -8.0
 offset_right = -8.0
 offset_bottom = -8.0
 inventory = NodePath("../Inventory")
+
+[node name="Grass2" type="Sprite2D" parent="."]
+position = Vector2(-504, 120)
+scale = Vector2(3, 3)
+texture = ExtResource("6_efxa6")
+
+[node name="Grass3" type="Sprite2D" parent="."]
+position = Vector2(-312, 120)
+scale = Vector2(3, 3)
+texture = ExtResource("6_efxa6")
+
+[node name="Grass4" type="Sprite2D" parent="."]
+position = Vector2(-120, 120)
+scale = Vector2(3, 3)
+texture = ExtResource("6_efxa6")
+
+[node name="Grass5" type="Sprite2D" parent="."]
+position = Vector2(72, 120)
+scale = Vector2(3, 3)
+texture = ExtResource("6_efxa6")
+
+[node name="Grass6" type="Sprite2D" parent="."]
+position = Vector2(264, 120)
+scale = Vector2(3, 3)
+texture = ExtResource("6_efxa6")
+
+[node name="Grass7" type="Sprite2D" parent="."]
+position = Vector2(456, 120)
+scale = Vector2(3, 3)
+texture = ExtResource("6_efxa6")
+
+[node name="Grass8" type="Sprite2D" parent="."]
+position = Vector2(648, 120)
+scale = Vector2(3, 3)
+texture = ExtResource("6_efxa6")
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

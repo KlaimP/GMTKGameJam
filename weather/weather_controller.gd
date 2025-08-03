@@ -65,6 +65,10 @@ func _ready() -> void:
 
 func update(_time: float, _cloudiness: float, delta: float):
 	var time = -(abs(_time) - 0.5) * 2.
+<<<<<<< HEAD
+=======
+	#%Time.text = str(snapped(time, 0.01))
+>>>>>>> origin/soilGrass
 	
 	time_passed += delta
 	if last_checked + average_time < time_passed:
