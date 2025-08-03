@@ -46,7 +46,15 @@ func decide_weather(day_night: float, temperature: float, cloudiness: float, moi
 	for i in range(weather_chances.size()):
 		weather_chances[i] += (randf() - 0.5) * NOISE_SCALE
 	
+	var max = 0
+	for i in range(weather_chances.size()):
+		if weather_chances[i] > weather_chances[max]:
+			max = i
+	
 	return randi()%7
+	#return max
+
+
 
 
 
