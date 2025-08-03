@@ -11,7 +11,4 @@ func end_weather():
 	super.end_weather()
 	$ThunderEffect.hide()
 	$ThunderBackground.hide()
-
-
-
 	
