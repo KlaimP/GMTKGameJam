@@ -14,6 +14,10 @@ var ui_spacing: int = 5
 
 
 var choosed: int = -1
+var previous_weather: int = 0
+
+
+var NOISE_SCALE: float = 0.1
 
 
 
@@ -30,7 +34,7 @@ func next_weather(day_night: float, temperature: float, cloudiness: float, moist
 func decide_weather(day_night: float, temperature: float, cloudiness: float, moisture: float) -> int:
 	var weather_chances: Array
 	weather_chances.resize(7)
-	weather_chances[0] = score_clear(day_night, temperature, cloudiness, moisture)
+	weather_chances[0] = 0.5
 	weather_chances[1] = score_rain(day_night, temperature, cloudiness, moisture)
 	weather_chances[2] = score_thunder(day_night, temperature, cloudiness, moisture)
 	weather_chances[3] = score_snow(day_night, temperature, cloudiness, moisture)
@@ -38,55 +42,92 @@ func decide_weather(day_night: float, temperature: float, cloudiness: float, moi
 	weather_chances[5] = score_drought(day_night, temperature, cloudiness, moisture)
 	weather_chances[6] = score_mist(day_night, temperature, cloudiness, moisture)
 	
-	var choice = [0, 0]
-	for i in range(1, weather_chances.size()):
-		for c in range(choice.size()):
-			if weather_chances[i] > weather_chances[choice[c]]:
-				choice[c] = i
-				break
 	
-	var rand = randf()
-	var closest = 0
-	var diff = 1.
-	for c in range(choice.size()):
-		if abs(choice[c] - rand) < diff:
-			closest = c
-			diff = abs(choice[c] - rand)
+	for i in range(weather_chances.size()):
+		weather_chances[i] += (randf() - 0.5) * NOISE_SCALE
 	
-	return choice.pick_random()
+	return randi()%7
 
 
-func score_clear(day_night, temp, cloudiness, moisture):
-	var score = (1.0 - cloudiness) + (1.0 - moisture) + (0.5 + 0.5 * day_night)
-	return score/3.
 
 func score_rain(day_night, temp, cloudiness, moisture):
-	var temp_factor = smoothstep(0.3, 0.75, temp)
-	var score = cloudiness + moisture + temp_factor
-	return score/3.
+	var score = 0.2
+	if cloudiness > 0.5:
+		score += 0.3
+	if cloudiness > 0.8:
+		score += 0.2
+	if moisture > 0.7:
+		score += 0.2
+	if temp < 0.3:
+		score = 0.
+	return score
 
 func score_thunder(day_night, temp, cloudiness, moisture):
-	var temp_factor = smoothstep(0.5, 1.0, temp)
-	var score = cloudiness + moisture + temp_factor + (0.5 + 0.5 * day_night)
-	return score/4.
+	var score = 0.1
+	if cloudiness > 0.5:
+		score += 0.2
+	if cloudiness > 0.8:
+		score += 0.4
+	if moisture > 0.8:
+		score += 0.2
+	if temp < 0.3:
+		score = 0.
+	return score
 
 func score_snow(day_night, temp, cloudiness, moisture):
-	var score = cloudiness + moisture + (1. - smoothstep(0.2, 0.4, temp))
-	return score/3.
+	var score = 0.2
+	if cloudiness > 0.4:
+		score += 0.3
+	if cloudiness > 0.7:
+		score += 0.2
+	if moisture > 0.5:
+		score += 0.2
+	if temp > 0.4:
+		score = 0.
+	return score
 
 func score_blizzard(day_night, temp, cloudiness, moisture):
-	var score = (1. - smoothstep(0.0, 0.3, temp)) + cloudiness + moisture + (1.0 - day_night)
-	return score/4.
+	var score = 0.2
+	if cloudiness > 0.6:
+		score += 0.3
+	if cloudiness > 0.9:
+		score += 0.3
+	if moisture > 0.7:
+		score += 0.2
+	if temp > 0.3:
+		score = 0.
+	return score
 
 func score_drought(day_night, temp, cloudiness, moisture):
-	var score = temp + (1.0 - moisture) + (1.0 - cloudiness) + (0.5 + 0.5 * day_night)
-	return score/4.
-
+	var score = 0.0
+	if day_night > 0.5:
+		score += 0.3
+	if cloudiness < 0.5:
+		score += 0.1
+	if cloudiness < 0.3:
+		score += 0.3
+	if moisture > 0.5:
+		score -= 0.2
+	if moisture < 0.3:
+		score += 0.3
+	if temp < 0.5:
+		score -= 0.2
+	if temp > 0.8:
+		score += 0.2
+	return score
 
 func score_mist(day_night, temp, cloudiness, moisture):
-	var temp_pref = 1.0 - abs(remap(temp, 0.0, 1.0, 0.5, 0.5) - 0.5)
-	var score = moisture + smoothstep(0.3, 0.8, cloudiness) + (1.0 - day_night) + temp_pref
-	return score/4.
+	var score = 0.2
+	if day_night < 0.5:
+		score += 0.2
+	if moisture > 0.5:
+		score += 0.2
+	if moisture > 0.8:
+		score += 0.2
+	if temp < 0.4:
+		score = 0.
+	return score
+
 
 
 
@@ -104,15 +145,6 @@ func choosed_day(day: int):
 
 
 func _ready() -> void:
-	print(decide_weather(0.5, 0.8, 0.9, 0.9))
-	print(decide_weather(0.1, 0.1, 0.9, 0.9))
-	print(decide_weather(0.1, 0.1, 0.1, 0.1))
-	print(decide_weather(0.9, 0.5, 0.9, 0.9))
-	print(decide_weather(0.8, 0.1, 0.9, 0.1))
-	print(decide_weather(0.5, 0.8, 0.1, 0.1))
-	print(decide_weather(0.9, 0.9, 0.9, 0.1))
-	print(decide_weather(0.5, 0.8, 0.5, 0.5))
-	print(decide_weather(0.5, 0.1, 0.5, 0.5))
 	Events.choosed_day.connect(choosed_day)
 	weather_array.resize(days_in_forecast)
 	$ForecastBackground.size = Vector2(

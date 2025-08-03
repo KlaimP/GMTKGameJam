@@ -3,11 +3,12 @@ class_name WeatherController
 
 
 var cloudiness: float = 0.5
-var cloud_speed: float = 0.2
+var cloud_speed: float = 0.05
 
 var temperature: float = 15.
-var temp_change: float = 0.5
+var temp_change: float = 0.1
 var temp_edges: Vector2 = Vector2(-15., 35.)
+var prev_temp: float = 0.
 
 var moisture: float = 0.5
 var moisture_speed: float = 0.01
@@ -86,10 +87,13 @@ func update(_time: float, _cloudiness: float, delta: float):
 	cloudiness = new
 	%Cloudiness.text = str(snapped(cloudiness, 0.01))
 	
+	if temperature > temp_edges.y:
+		temperature = prev_temp
 	new = weather.change_temperature(temperature, temp_edges, cloudiness, temp_change, time, delta)
 	change_arrow(0 if abs(new-temperature) < arrow_diff * delta else (-1 if new < temperature else 1), %TemperatureArrow)
 	temperature = new
 	%Temperature.text = str(snapped(temperature, 0.1)) + " °C"
+	prev_temp = temperature
 	
 	new = weather.change_moisture(time, cloudiness, moisture, moisture_speed, temperature, temp_edges, delta)
 	change_arrow(0 if abs(new-moisture) < arrow_diff * delta else (-1 if new < moisture else 1), %MoistureArrow)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dee81medpgu71"
-path="res://.godot/imported/2_1.png-7f6fe280d77da346b9325c34c34acb86.ctex"
+uid="uid://bef4adymfi58e"
+path="res://.godot/imported/1_2.png-c4ee547951e51b4439ddb46be1db57ba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://plants/sprites/2_1.png"
-dest_files=["res://.godot/imported/2_1.png-7f6fe280d77da346b9325c34c34acb86.ctex"]
+source_file="res://plants/sprites/vasya/1_2.png"
+dest_files=["res://.godot/imported/1_2.png-c4ee547951e51b4439ddb46be1db57ba.ctex"]
 
 [params]
 

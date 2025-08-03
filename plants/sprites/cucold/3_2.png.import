@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bef4adymfi58e"
-path="res://.godot/imported/1_2.png-2709bcb4076b2330eb829faef24e8748.ctex"
+uid="uid://cs6lrx1n7pnpv"
+path="res://.godot/imported/3_2.png-cc410e977c41dac0c1117194175d3dd3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://plants/sprites/1_2.png"
-dest_files=["res://.godot/imported/1_2.png-2709bcb4076b2330eb829faef24e8748.ctex"]
+source_file="res://plants/sprites/cucold/3_2.png"
+dest_files=["res://.godot/imported/3_2.png-cc410e977c41dac0c1117194175d3dd3.ctex"]
 
 [params]
 

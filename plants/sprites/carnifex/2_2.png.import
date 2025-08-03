@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d00rguxxs8gvn"
-path="res://.godot/imported/1_1.png-c51fa54fa9bb210a18b65f80470a778f.ctex"
+uid="uid://bvylsimhgrvl1"
+path="res://.godot/imported/2_2.png-d986348ac37e1d5802a74ff0f23d321b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://plants/sprites/1_1.png"
-dest_files=["res://.godot/imported/1_1.png-c51fa54fa9bb210a18b65f80470a778f.ctex"]
+source_file="res://plants/sprites/carnifex/2_2.png"
+dest_files=["res://.godot/imported/2_2.png-d986348ac37e1d5802a74ff0f23d321b.ctex"]
 
 [params]
 

@@ -8,6 +8,3 @@ func start_weather():
 func end_weather():
 	super.end_weather()
 	$MistEffect.hide()
-
-
-	

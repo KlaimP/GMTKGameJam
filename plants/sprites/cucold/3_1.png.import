@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d13kewypk32kh"
-path="res://.godot/imported/3_1.png-18e62f412b9432bd2616954c333cd2bf.ctex"
+path="res://.godot/imported/3_1.png-e0709d1a7f26ed3b5de3b68c02e3f971.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://plants/sprites/3_1.png"
-dest_files=["res://.godot/imported/3_1.png-18e62f412b9432bd2616954c333cd2bf.ctex"]
+source_file="res://plants/sprites/cucold/3_1.png"
+dest_files=["res://.godot/imported/3_1.png-e0709d1a7f26ed3b5de3b68c02e3f971.ctex"]
 
 [params]
 

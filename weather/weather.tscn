@@ -144,6 +144,9 @@ script = ExtResource("3_v4dhi")
 
 [node name="Rain" type="Node" parent="Weathers"]
 script = ExtResource("5_e3ycq")
+temp_rise = 0.95
+moist_change = 1.1
+cloud_change = 0.8
 
 [node name="RainEffect" type="ColorRect" parent="Weathers/Rain"]
 visible = false
@@ -166,6 +169,9 @@ color = Color(0.262745, 0.262745, 0.262745, 0.392157)
 
 [node name="Thunder" type="Node" parent="Weathers"]
 script = ExtResource("7_rla6p")
+temp_rise = 0.95
+moist_change = 1.2
+cloud_change = 0.8
 
 [node name="ThunderEffect" type="ColorRect" parent="Weathers/Thunder"]
 visible = false
@@ -188,6 +194,8 @@ color = Color(0.160186, 0.123338, 0.237659, 0.392157)
 
 [node name="Snow" type="Node" parent="Weathers"]
 script = ExtResource("8_ydboc")
+temp_rise = 1.1
+cloud_change = 0.8
 
 [node name="SnowEffect" type="ColorRect" parent="Weathers/Snow"]
 visible = false
@@ -210,6 +218,8 @@ color = Color(0.313726, 0.243137, 0.952941, 0.243137)
 
 [node name="Blizzard" type="Node" parent="Weathers"]
 script = ExtResource("9_rxjn3")
+temp_rise = 0.9
+cloud_change = 0.6
 
 [node name="BlizzardEffect" type="ColorRect" parent="Weathers/Blizzard"]
 visible = false
@@ -232,6 +242,9 @@ color = Color(0.108811, 0.128232, 0.759834, 0.392157)
 
 [node name="Drought" type="Node" parent="Weathers"]
 script = ExtResource("10_sgtd7")
+temp_rise = 1.2
+moist_change = 0.7
+cloud_change = 0.5
 
 [node name="DroughtEffect" type="ColorRect" parent="Weathers/Drought"]
 visible = false
@@ -254,6 +267,8 @@ color = Color(0.502289, 0.290193, 2.88785e-07, 0.392157)
 
 [node name="Mist" type="Node" parent="Weathers"]
 script = ExtResource("11_hbfyc")
+moist_change = 1.2
+cloud_change = 1.2
 
 [node name="MistEffect" type="ColorRect" parent="Weathers/Mist"]
 visible = false
@@ -285,6 +300,7 @@ color = Color(0, 0, 0, 0.717647)
 
 [node name="Cloudiness" type="Label" parent="Background"]
 unique_name_in_owner = true
+layout_mode = 0
 offset_left = 249.0
 offset_top = 5.0
 offset_right = 289.0
@@ -304,6 +320,7 @@ text = "Cloudiness"
 
 [node name="Moisture" type="Label" parent="Background"]
 unique_name_in_owner = true
+layout_mode = 0
 offset_left = 249.0
 offset_top = 29.0
 offset_right = 289.0
@@ -315,6 +332,7 @@ unique_name_in_owner = true
 position = Vector2(-7, 11)
 
 [node name="Label" type="Label" parent="Background/Moisture"]
+layout_mode = 0
 offset_left = -121.0
 offset_right = -19.0
 offset_bottom = 23.0
@@ -322,6 +340,7 @@ text = "Moisture"
 
 [node name="Temperature" type="Label" parent="Background"]
 unique_name_in_owner = true
+layout_mode = 0
 offset_left = 249.0
 offset_top = 51.0
 offset_right = 289.0
@@ -333,6 +352,7 @@ unique_name_in_owner = true
 position = Vector2(-7, 12)
 
 [node name="Label" type="Label" parent="Background/Temperature"]
+layout_mode = 0
 offset_left = -120.0
 offset_right = -18.0
 offset_bottom = 23.0

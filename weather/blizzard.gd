@@ -10,6 +10,3 @@ func end_weather():
 	super.end_weather()
 	$BlizzardEffect.hide()
 	$BlizzardBackground.hide()
-
-
-	
