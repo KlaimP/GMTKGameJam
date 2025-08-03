@@ -13,6 +13,8 @@ var prev_temp: float = 0.
 var moisture: float = 0.5
 var moisture_speed: float = 0.01
 
+var time_global: float
+
 
 enum avg_types {
 	DAY_NIGHT_RATIO,
@@ -65,6 +67,7 @@ func _ready() -> void:
 
 func update(_time: float, _cloudiness: float, delta: float):
 	var time = -(abs(_time) - 0.5) * 2.
+	time_global = time
 	
 	time_passed += delta
 	if last_checked + average_time < time_passed:
