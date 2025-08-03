@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="PlantType" load_steps=5 format=3 uid="uid://uosnj2i5meo4"]
 
 [ext_resource type="Texture2D" uid="uid://dee81medpgu71" path="res://plants/sprites/carnifex/2_1.png" id="1_77afa"]
-[ext_resource type="Script" path="res://plants/plant_types.gd" id="1_xd4qs"]
+[ext_resource type="Script" uid="uid://bswqyjrokr8wb" path="res://plants/plant_types.gd" id="1_xd4qs"]
 [ext_resource type="Texture2D" uid="uid://bvylsimhgrvl1" path="res://plants/sprites/carnifex/2_2.png" id="2_7ilfp"]
 [ext_resource type="Texture2D" uid="uid://xm035tqi6fai" path="res://plants/sprites/carnifex/2_3.png" id="3_4ucb6"]
 
@@ -18,3 +18,4 @@ max_water = 3.0
 is_day_plant = true
 max_health = 50
 like_rain = 3.0
+metadata/_custom_type_script = "uid://bswqyjrokr8wb"

@@ -70,9 +70,10 @@ value = 0.5
 tick_count = 3
 ticks_on_borders = true
 
-[node name="PlantManager" type="Node2D" parent="." node_paths=PackedStringArray("where_plant")]
+[node name="PlantManager" type="Node2D" parent="." node_paths=PackedStringArray("where_plant", "weather")]
 script = ExtResource("9_kek77")
 where_plant = NodePath("../Plants")
+weather = NodePath("../Weather")
 
 [node name="OpenStoreButton" type="Button" parent="."]
 offset_left = -576.0
