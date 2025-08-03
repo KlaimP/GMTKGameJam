@@ -7,7 +7,8 @@ class_name Card
 
 @export var hover_scale: Vector2 = Vector2.ONE * 1.2  # Во сколько раз увеличиваем
 @export var anim_duration: float = 0.1                # Время анимации
-@export var plant: Plant
+@export var plant: Node2D
+@export var plantManager: Node2D
 
 var _orig_scale: Vector2
 var _tween: Tween
@@ -32,3 +33,9 @@ func _on_mouse_exited():
 
 func _on_tween_finished():
 	z_index = 0
+
+
+func _on_gui_input(event: InputEvent) -> void:
+	if (event.is_action("click")):
+		plantManager.selected_card = self
+		print(plantManager.selected_card)

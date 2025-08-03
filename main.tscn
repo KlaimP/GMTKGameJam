@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://d3ipapou67dv5"]
+[gd_scene load_steps=11 format=3 uid="uid://d3ipapou67dv5"]
 
 [ext_resource type="Script" uid="uid://ct0nbvb1ubokq" path="res://main.gd" id="1_4c57u"]
 [ext_resource type="PackedScene" uid="uid://cpkqw3to1xuv1" path="res://weather/weather.tscn" id="3_7mycd"]
 [ext_resource type="Texture2D" uid="uid://dtp4ii1pcp5jd" path="res://soil/sprites/soil.png" id="6_4c57u"]
-[ext_resource type="PackedScene" uid="uid://bcj01evqynl6h" path="res://plants/plant.tscn" id="6_7mycd"]
 [ext_resource type="Texture2D" uid="uid://c0ho2rqqavanc" path="res://soil/sprites/grass.png" id="6_efxa6"]
 [ext_resource type="PackedScene" uid="uid://cmhnueu6sm7wj" path="res://soil/tile.tscn" id="6_kek77"]
 [ext_resource type="Script" uid="uid://bsxvpb0akspjn" path="res://plant_manager.gd" id="9_kek77"]
@@ -73,7 +72,6 @@ ticks_on_borders = true
 
 [node name="PlantManager" type="Node2D" parent="." node_paths=PackedStringArray("where_plant")]
 script = ExtResource("9_kek77")
-selected_card = ExtResource("6_7mycd")
 where_plant = NodePath("../Plants")
 
 [node name="OpenStoreButton" type="Button" parent="."]
@@ -122,7 +120,7 @@ texture = ExtResource("6_efxa6")
 unique_name_in_owner = true
 position = Vector2(-577, 115)
 
-[node name="Inventory" parent="." instance=ExtResource("17_yaehf")]
+[node name="Inventory" parent="." node_paths=PackedStringArray("plantManager") instance=ExtResource("17_yaehf")]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -135,6 +133,7 @@ offset_bottom = 318.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.8, 0.8)
+plantManager = NodePath("../PlantManager")
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
