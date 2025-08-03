@@ -72,6 +72,9 @@ func set_type(type: PlantType):
 
 
 func _process(delta: float) -> void:
+	soil_moisture = %Weather.moisture
+	is_day = get_parent().get_parent().time > 0.
+	is_rain = %Weather.current_weather == 1 or %Weather.current_weather == 2
 	if (can_grow):
 		process_growth(delta)
 	die_process(delta)
